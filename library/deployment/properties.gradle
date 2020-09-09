@@ -1,0 +1,23 @@
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'rosia-promotions'
+
+    publishedGroupId = 'com.evolve'
+    libraryName = 'rosia-promotions'
+    artifact = 'rosia-promotions'
+
+    libraryDescription = 'Library to handle promotions in rosia platform'
+
+    siteUrl = 'https://git.evolveasia.co/mobile_internal_libraries/rosia-promotions.git'
+    gitUrl = 'https://git.evolveasia.co/mobile_internal_libraries/rosia-promotions.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'krishnalalstha-evolve'
+    developerName = 'Krishna Shrestha'
+    developerEmail = 'krishna06318@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}

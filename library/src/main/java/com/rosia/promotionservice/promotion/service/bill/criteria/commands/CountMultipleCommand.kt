@@ -1,7 +1,7 @@
 package com.rosia.promotionservice.promotion.service.bill.criteria.commands
 
-import com.rosia.feature.promotion.service.Command
-import com.rosia.feature.promotion.service.bill.criteria.CriteriaReceiver
+import com.rosia.promotionservice.promotion.service.Command
+import com.rosia.promotionservice.promotion.service.bill.criteria.CriteriaReceiver
 import com.rosia.promotionservice.promotion.data.PromotionModel
 
 class CountMultipleCommand(

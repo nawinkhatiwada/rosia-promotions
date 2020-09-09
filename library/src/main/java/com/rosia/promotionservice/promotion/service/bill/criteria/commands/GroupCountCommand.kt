@@ -1,6 +1,6 @@
 package com.rosia.promotionservice.promotion.service.bill.criteria.commands
 
-import com.rosia.feature.promotion.service.Command
+import com.rosia.promotionservice.promotion.service.Command
 import com.rosia.promotionservice.promotion.data.PromotionModel
 import com.rosia.promotionservice.promotion.service.bill.criteria.CriteriaReceiver
 

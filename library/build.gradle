@@ -38,5 +38,20 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
+    //arch component
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation "org.mockito:mockito-core:2.23.4"
+    //Mocking (creating fake classes)
+    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
+//    Run blocking test
+//    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
+    testImplementation 'com.google.truth:truth:0.44'
 }
+afterEvaluate {
+    bintrayUpload.dependsOn('assembleRelease')
+    bintrayUpload.dependsOn('sourcesJar')
+}
+
+apply from: 'deployment/properties.gradle'
+apply from: 'deployment/installer.gradle'
+apply from: 'deployment/bintray.gradle'

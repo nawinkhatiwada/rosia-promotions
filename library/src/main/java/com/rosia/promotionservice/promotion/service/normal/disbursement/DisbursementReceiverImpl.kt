@@ -1,8 +1,8 @@
 package com.rosia.promotionservice.promotion.service.normal.disbursement
 
-import com.rosia.feature.promotion.data.PromotionModel
-import com.rosia.feature.promotion.service.AmountCalculator
-import com.rosia.feature.promotion.service.PromotionListener
+import com.rosia.promotionservice.promotion.data.PromotionModel
+import com.rosia.promotionservice.promotion.service.AmountCalculator
+import com.rosia.promotionservice.promotion.service.PromotionListener
 
 class DisbursementReceiverImpl(private val listener: PromotionListener) : DisbursementReceiver {
 
