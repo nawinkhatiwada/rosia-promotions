@@ -2,7 +2,6 @@ package com.rosia.promotionservice.promotion.data
 
 import android.os.Parcelable
 import androidx.room.Ignore
-import com.rosia.promotionservice.promotion.ListItem
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -87,12 +86,8 @@ data class PromotionSkuModel(
     @Ignore var orderId: Long,
     @Ignore var topUpDiscount: Double = 0.0,
     @Ignore var stockQty: Int?
-) : Parcelable, ListItem {
+) : Parcelable {
     constructor() : this(0, "", "", 0, 0, false, true, null, 0.0, 0.0, 0.0, 0.0, 0.0, 0L, 0.0, 0)
-    // will be removed in the next release
-    override fun getListItemType(): Int {
-        return ListItem.BODY
-    }
 }
 
 @Parcelize
