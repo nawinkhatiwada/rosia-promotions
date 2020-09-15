@@ -1,10 +1,12 @@
 ext {
-    bintrayRepo = 'maven'
+    bintrayRepo = 'ROSIA-Promotions'
     bintrayName = 'rosia-promotions'
 
     publishedGroupId = 'com.evolve'
     libraryName = 'rosia-promotions'
     artifact = 'rosia-promotions'
+    apikey = '98f7aac263861254dfe7e8848dae09193aa877a6'
+    user = 'krishnalalstha-evolve'
 
     libraryDescription = 'Library to handle promotions in rosia platform'
 
