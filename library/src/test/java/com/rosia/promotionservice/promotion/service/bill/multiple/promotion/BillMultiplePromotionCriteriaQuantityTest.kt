@@ -1,15 +1,14 @@
-package com.rosia.promotionservice.promotion.service.bill.single
+package com.rosia.promotionservice.promotion.service.bill.multiple.promotion
 
 import com.rosia.promotionservice.promotion.service.Promotion
 import com.rosia.promotionservice.promotion.service.PromotionService
-import com.rosia.promotionservice.promotion.service.bill.DataSource
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.InjectMocks
 import org.mockito.MockitoAnnotations
 
-class BillSinglePromotionCriteriaQuantityTest {
+class BillMultiplePromotionCriteriaQuantityTest {
 
     @InjectMocks
     lateinit var promotion: Promotion
@@ -20,48 +19,46 @@ class BillSinglePromotionCriteriaQuantityTest {
     }
 
     @Test
-    fun checkBillPromotion_SingleType_CriteriaQuantity_PercentDisbursement_shouldReturnTrue() {
+    fun checkBillPromotion_MultipleType_CriteriaQuantity_PercentDisbursement_shouldReturnTrue() {
         val promotionService = PromotionService(
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_bill_single_quantity_percent_promotion_success(),
+            promotionModel = BillMultiplePromotionDataSource.get_bill_multiple_quantity_percent_promotion_success(),
         )
-        val sku = promotion.promotionModel.skuList.first()
         assertEquals(true, promotion.promotionModel.isApplied)
-        print(promotion.promotionModel)
     }
 
     @Test
-    fun checkBillPromotion_SingleType_CriteriaQuantity_PercentDisbursement_shouldReturnFalse() {
+    fun checkBillPromotion_MultipleType_CriteriaQuantity_PercentDisbursement_shouldReturnFalse() {
         val promotionService = PromotionService(
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_bill_single_quantity_percent_promotion_error(),
+            promotionModel = BillMultiplePromotionDataSource.get_bill_multiple_quantity_percent_promotion_error(),
         )
         assertEquals(false, promotion.promotionModel.isApplied)
         assertEquals("Quantity criteria not satisfied", promotion.message)
     }
 
     @Test
-    fun checkBillPromotion_SingleType_CriteriaQuantity_AmountDisbursement_shouldReturnTrue() {
+    fun checkBillPromotion_MultipleType_CriteriaQuantity_AmountDisbursement_shouldReturnTrue() {
         val promotionService = PromotionService(
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_bill_single_quantity_amount_promotion_success(),
+            promotionModel = BillMultiplePromotionDataSource.get_bill_multiple_quantity_amount_promotion_success(),
         )
         assertEquals(true, promotion.promotionModel.isApplied)
     }
 
     @Test
-    fun checkBillPromotion_SingleType_CriteriaQuantity_AmountDisbursement_shouldReturnFalse() {
+    fun checkBillPromotion_MultipleType_CriteriaQuantity_AmountDisbursement_shouldReturnFalse() {
         val promotionService = PromotionService(
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_bill_single_quantity_amount_promotion_error(),
+            promotionModel = BillMultiplePromotionDataSource.get_bill_multiple_quantity_amount_promotion_error(),
         )
         assertEquals(false, promotion.promotionModel.isApplied)
         assertEquals("Quantity criteria not satisfied", promotion.message)

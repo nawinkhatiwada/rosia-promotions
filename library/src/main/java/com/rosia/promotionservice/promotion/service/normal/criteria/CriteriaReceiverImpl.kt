@@ -69,8 +69,8 @@ class CriteriaReceiverImpl(private val listener: PromotionListener) : CriteriaRe
     override fun handleQuantityCriteriaUseCase(promotion: PromotionModel): Boolean {
         val isValidMoq = checkMOQValidation(promotion)
         if (isValidMoq.first) {
-            val listOfApplicableSku =
-                promotion.applicableSkuIds?.split(',')?.map { it.toLong() } ?: listOf()
+//            val listOfApplicableSku = promotion.applicableSkuIds?.split(',')?.map { it.toLong() } ?: listOf()
+            val listOfApplicableSku = promotion.applicableSkuModelList?.map { it.skuId }?: emptyList()
             val applicableSkuModel = promotion.skuList.filter { it.skuId in listOfApplicableSku }
             val selectedSkuCount = applicableSkuModel.count { it.quantity > 0 }
 

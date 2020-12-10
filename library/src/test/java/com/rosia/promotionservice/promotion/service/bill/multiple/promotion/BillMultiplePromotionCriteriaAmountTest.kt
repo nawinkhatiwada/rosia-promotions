@@ -1,8 +1,7 @@
-package com.rosia.promotionservice.promotion.service.bill.multiple
+package com.rosia.promotionservice.promotion.service.bill.multiple.promotion
 
 import com.rosia.promotionservice.promotion.service.Promotion
 import com.rosia.promotionservice.promotion.service.PromotionService
-import com.rosia.promotionservice.promotion.service.bill.DataSource
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -25,7 +24,7 @@ class BillMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_bill_multiple_amount_percent_promotion_success(),
+            promotionModel = BillMultiplePromotionDataSource.get_bill_multiple_amount_percent_promotion_success(),
         )
         println(promotion.promotionModel)
         assertEquals(true, promotion.promotionModel.isApplied)
@@ -37,7 +36,7 @@ class BillMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_bill_multiple_amount_percent_promotion_error(),
+            promotionModel = BillMultiplePromotionDataSource.get_bill_multiple_amount_percent_promotion_error(),
         )
         assertEquals(false, promotion.promotionModel.isApplied)
         assertEquals("Amount criteria not satisfied", promotion.message)
@@ -49,7 +48,7 @@ class BillMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_bill_multiple_amount_amount_promotion_success(),
+            promotionModel =BillMultiplePromotionDataSource.get_bill_multiple_amount_amount_promotion_success(),
         )
         assertEquals(true, promotion.promotionModel.isApplied)
     }
@@ -60,7 +59,7 @@ class BillMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_bill_multiple_amount_amount_promotion_error(),
+            promotionModel = BillMultiplePromotionDataSource.get_bill_multiple_amount_amount_promotion_error(),
         )
         assertEquals(false, promotion.promotionModel.isApplied)
         assertEquals("Amount criteria not satisfied", promotion.message)
@@ -72,12 +71,12 @@ class BillMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = com.rosia.promotionservice.promotion.service.DataSource.get_normal_multiple_amount_sku_promotion_success(),
+            promotionModel = BillMultiplePromotionDataSource.get_normal_multiple_amount_sku_promotion_success(),
         )
+        println(promotion.message)
         assertEquals(true, promotion.promotionModel.isApplied)
         assertEquals(2.0, promotion.promotionModel.newDisbursementValue, 0.0)
         assertEquals("", promotion.message)
-        println("${promotion.promotionModel.disbursementValue}")
     }
 
     @Test
@@ -86,9 +85,8 @@ class BillMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = com.rosia.promotionservice.promotion.service.DataSource.get_normal_multiple_amount_sku_promotion_error(),
+            promotionModel = BillMultiplePromotionDataSource.get_normal_multiple_amount_sku_promotion_error(),
         )
         assertEquals(false, promotion.promotionModel.isApplied)
-        assertEquals("Amount criteria not satisfied", promotion.message)
     }
 }

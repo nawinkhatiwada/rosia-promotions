@@ -11,6 +11,7 @@ object PromotionConstant {
     const val CRITERIA_AMOUNT = "AMOUNT"
     const val CRITERIA_QUANTITY = "QUANTITY"
     const val CRITERIA_COUNT = "COUNT"
+    const val CRITERIA_COUNT_MULTIPLE = "COUNT_MULTIPLE"
     const val CRITERIA_GROUP_COUNT = "GROUP_COUNT"
     const val CRITERIA_GROUP_COUNT_MULTIPLE = "GROUP_COUNT_MULTIPLE"
 

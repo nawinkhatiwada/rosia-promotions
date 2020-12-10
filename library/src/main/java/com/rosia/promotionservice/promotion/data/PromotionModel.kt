@@ -20,7 +20,7 @@ data class PromotionModel(
     var disbursementType: String,
     var disbursementValue: Double? = null,
     var callId: Long? = -1,
-    var applicableSkuIds: String? = "",
+    var applicableSkuIds: String? = "",         // todo remove
     var isApplied: Boolean = false,
     var promotionType: String,
     @Ignore var disbursementSkuList: List<DisbursementSkuModel>? = null,
@@ -118,9 +118,11 @@ data class ApplicableSkuLocalModel(
     var criteriaMinOpr: String,
     var criteriaMinValue: Int,
     var skuGroupId: Int,
-    @Ignore var groupCriteriaLocalModel: PromotionSkuGroupModel? // map this model with PromotionSkuGroupEntity
+    var familyStatus: Boolean,
+    @Ignore var groupCriteriaLocalModel: PromotionSkuGroupModel?, // map this model with PromotionSkuGroupEntity
+    @Ignore var skuFamilyCriteriaModel: SkuFamilyCriteriaModel?
 ) : Parcelable {
-    constructor() : this(0, "", "", 0, "", 0, 0, null)
+    constructor() : this(0, "", "", 0, "", 0, 0, false,null, null)
 }
 
 @Parcelize
@@ -144,5 +146,18 @@ data class PromotionSkuGroupModel(
     var minValue: Int,
     var minType: String,
     var skuCount: Int, // MOQ
+    var allowMultiple: Boolean
+) : Parcelable
+
+@Parcelize
+data class SkuFamilyCriteriaModel(
+    var familyId: Long,
+    var promotionId: Long,
+    var type: String,
+    var maxValue: Int,
+    var maxType: String,
+    var minValue: Int,
+    var minType: String,
+    var skuCount: Int,
     var allowMultiple: Boolean
 ) : Parcelable

@@ -1,9 +1,6 @@
 package com.rosia.promotionservice.promotion.service
 
-import com.rosia.promotionservice.promotion.data.ApplicableSkuLocalModel
-import com.rosia.promotionservice.promotion.data.PromotionModel
-import com.rosia.promotionservice.promotion.data.PromotionSkuGroupModel
-import com.rosia.promotionservice.promotion.data.PromotionSkuModel
+import com.rosia.promotionservice.promotion.data.*
 import com.rosia.promotionservice.promotion.service.bill.criteria.operator.OperatorHandler
 
 fun checkMOQValidation(promotionModel: PromotionModel): Pair<Boolean, String> {
@@ -17,6 +14,15 @@ fun checkMOQValidation(promotionModel: PromotionModel): Pair<Boolean, String> {
         val isValidSku = handlePromotionSkuCriteria(skuList, orderedSKUList)
         if (!isValidSku.first)
             return isValidSku
+
+        val familyCriteria = skuList.first().skuFamilyCriteriaModel
+        if (skuList.first().familyStatus) {
+            familyCriteria?.let {
+                val isValidSkuFamily = handleSkuFamilyCriteria(orderedSKUList, it)
+                if (!isValidSkuFamily.first)
+                    return isValidSkuFamily
+            }
+        }
 
         // groupCriteria NULL means its normal promotion without custom group
         val groupCriteria = skuList.first().groupCriteriaLocalModel
@@ -140,4 +146,46 @@ private fun handlePromotionSkuGroupCriteria(
  * */
 internal inline fun <R> R?.orElse(block: () -> R): R {
     return this ?: block()
+}
+
+fun handleSkuFamilyCriteria(
+    skuList: List<PromotionSkuModel>,
+    familyCriteria: SkuFamilyCriteriaModel
+): Pair<Boolean, String> {
+    val totalQuantity = skuList.sumBy { it.quantity }
+    if (familyCriteria.type == PromotionConstant.CRITERIA_QUANTITY) {
+        val isValid =
+            OperatorHandler.isCriteriaValid(
+                totalQuantity.toDouble(),
+                familyCriteria.minValue.toDouble(),
+                familyCriteria.minType,
+                familyCriteria.maxValue.toDouble(),
+                familyCriteria.maxType
+            )
+        if (!isValid) {
+            return Pair(
+                false,
+                "Some of the family has MOQ ${familyCriteria.minValue}"
+            )
+        }
+    } else if (familyCriteria.type == PromotionConstant.CRITERIA_AMOUNT) {
+        val totalAmount = skuList.sumByDouble {
+            ((it.batchList?.filter { it.isSelected }?.first()?.rlpVat) ?: 0.0).times(it.quantity)
+        }
+        val isValid =
+           OperatorHandler.isCriteriaValid(
+                totalAmount,
+                familyCriteria.minValue.toDouble(),
+                familyCriteria.minType,
+                familyCriteria.maxValue.toDouble(),
+                familyCriteria.maxType
+            )
+        if (!isValid) {
+            return Pair(
+                false,
+                "Some of the family has Minimum Order Value of amount ${familyCriteria.minValue}"
+            )
+        }
+    }
+    return Pair(true, "")
 }
