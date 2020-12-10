@@ -1,9 +1,9 @@
-package com.rosia.promotionservice.promotion.service.topup.multiple
+package com.rosia.promotionservice.promotion.service.topup.multiple.promotion
 
 import com.rosia.promotionservice.promotion.service.Promotion
 import com.rosia.promotionservice.promotion.service.PromotionService
-import com.rosia.promotionservice.promotion.service.topup.DataSource
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.InjectMocks
@@ -25,9 +25,11 @@ class TopupMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_topup_multiple_amount_percent_promotion_success(),
+            promotionModel = TopupMultiplePromotionDataSource.get_topup_multiple_amount_percent_promotion_success(),
         )
         assertEquals(true, promotion.promotionModel.isApplied)
+        assertEquals(200.0, promotion.promotionModel.amountModel?.discountAmount)
+        assertNotEquals(250.0, promotion.promotionModel.amountModel?.discountAmount)
     }
 
     @Test
@@ -36,7 +38,7 @@ class TopupMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_topup_multiple_amount_percent_promotion_sku_moq_error(),
+            promotionModel = TopupMultiplePromotionDataSource.get_topup_multiple_amount_percent_promotion_sku_moq_error(),
         )
         assertEquals(false, promotion.promotionModel.isApplied)
         assertEquals("Vicks 3 has Minimum Order Value of amount 25", promotion.message)
@@ -48,7 +50,7 @@ class TopupMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_topup_multiple_amount_percent_promotion_sku_group_moq_error(),
+            promotionModel = TopupMultiplePromotionDataSource.get_topup_multiple_amount_percent_promotion_sku_group_moq_error(),
         )
         assertEquals(false, promotion.promotionModel.isApplied)
         assertEquals("Some of the group has Minimum Order Value of amount 1900", promotion.message)
@@ -60,7 +62,7 @@ class TopupMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_topup_multiple_amount_percent_promotion_error(),
+            promotionModel = TopupMultiplePromotionDataSource.get_topup_multiple_amount_percent_promotion_error(),
         )
         assertEquals(false, promotion.promotionModel.isApplied)
         assertEquals("Amount criteria not satisfied", promotion.message)
@@ -72,7 +74,7 @@ class TopupMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_topup_multiple_amount_percent_promotion_multiple_group_success(),
+            promotionModel = TopupMultiplePromotionDataSource.get_topup_multiple_amount_percent_promotion_multiple_group_success(),
         )
         assertEquals(true, promotion.promotionModel.isApplied)
     }
@@ -83,7 +85,7 @@ class TopupMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_topup_multiple_amount_percent_promotion_multiple_group_sku_error(),
+            promotionModel = TopupMultiplePromotionDataSource.get_topup_multiple_amount_percent_promotion_multiple_group_sku_error(),
         )
         assertEquals(false, promotion.promotionModel.isApplied)
         assertEquals("Vicks 3 has Minimum Order Value of amount 50", promotion.message)
@@ -95,7 +97,7 @@ class TopupMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_topup_multiple_amount_percent_promotion_multiple_group_sku_group_error(),
+            promotionModel = TopupMultiplePromotionDataSource.get_topup_multiple_amount_percent_promotion_multiple_group_sku_group_error(),
         )
         assertEquals(false, promotion.promotionModel.isApplied)
         assertEquals("SKU has MOQ 50", promotion.message)
@@ -107,7 +109,7 @@ class TopupMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_topup_multiple_amount_percent_promotion_multiple_group_error(),
+            promotionModel = TopupMultiplePromotionDataSource.get_topup_multiple_amount_percent_promotion_multiple_group_error(),
         )
         assertEquals(false, promotion.promotionModel.isApplied)
         assertEquals("Amount criteria not satisfied", promotion.message)
@@ -119,7 +121,7 @@ class TopupMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_topup_multiple_amount_amount_promotion_success(),
+            promotionModel = TopupMultiplePromotionDataSource.get_topup_multiple_amount_amount_promotion_success(),
         )
         assertEquals(true, promotion.promotionModel.isApplied)
     }
@@ -130,7 +132,7 @@ class TopupMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_topup_multiple_amount_amount_promotion_sku_moq_error(),
+            promotionModel = TopupMultiplePromotionDataSource.get_topup_multiple_amount_amount_promotion_sku_moq_error(),
         )
         assertEquals(false, promotion.promotionModel.isApplied)
         assertEquals("Vicks 100ml has Minimum Order Value of amount 20", promotion.message)
@@ -142,7 +144,7 @@ class TopupMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_topup_multiple_amount_amount_promotion_sku_group_moq_error(),
+            promotionModel = TopupMultiplePromotionDataSource.get_topup_multiple_amount_amount_promotion_sku_group_moq_error(),
         )
         assertEquals(false, promotion.promotionModel.isApplied)
         assertEquals("Some of the group has Minimum Order Value of amount 200", promotion.message)
@@ -154,7 +156,7 @@ class TopupMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_topup_multiple_amount_amount_promotion_error(),
+            promotionModel = TopupMultiplePromotionDataSource.get_topup_multiple_amount_amount_promotion_error(),
         )
         assertEquals(false, promotion.promotionModel.isApplied)
         assertEquals("Amount criteria not satisfied", promotion.message)
@@ -166,8 +168,11 @@ class TopupMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_topup_multiple_amount_amount_promotion_multiple_group_success(),
+            promotionModel = TopupMultiplePromotionDataSource.get_topup_multiple_amount_amount_promotion_multiple_group_success(),
         )
+        assertEquals(100.0, promotion.promotionModel.disbursementValue)
+        assertEquals(100.0, promotion.promotionModel.amountModel?.discountAmount)
+        assertNotEquals(125.0,  promotion.promotionModel.amountModel?.discountAmount)
         assertEquals(true, promotion.promotionModel.isApplied)
     }
 
@@ -177,7 +182,7 @@ class TopupMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_topup_multiple_amount_amount_promotion_multiple_group_sku_error(),
+            promotionModel = TopupMultiplePromotionDataSource.get_topup_multiple_amount_amount_promotion_multiple_group_sku_error(),
         )
         assertEquals(false, promotion.promotionModel.isApplied)
         assertEquals("Vicks 4 has Minimum Order Value of amount 50", promotion.message)
@@ -189,7 +194,7 @@ class TopupMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_topup_multiple_amount_amount_promotion_multiple_group_sku_group_error(),
+            promotionModel = TopupMultiplePromotionDataSource.get_topup_multiple_amount_amount_promotion_multiple_group_sku_group_error(),
         )
         assertEquals(false, promotion.promotionModel.isApplied)
         assertEquals("Some of the group has Minimum Order Value of amount 150", promotion.message)
@@ -201,7 +206,7 @@ class TopupMultiplePromotionCriteriaAmountTest {
             listener = promotion
         )
         promotionService.checkPromotion(
-            promotionModel = DataSource.get_topup_multiple_amount_amount_promotion_multiple_group_error(),
+            promotionModel = TopupMultiplePromotionDataSource.get_topup_multiple_amount_amount_promotion_multiple_group_error(),
         )
         assertEquals(false, promotion.promotionModel.isApplied)
         assertEquals("Amount criteria not satisfied", promotion.message)

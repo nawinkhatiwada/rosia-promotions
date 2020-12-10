@@ -1,6 +1,6 @@
-package com.rosia.promotionservice.promotion.service.normal.type.single
+package com.rosia.promotionservice.promotion.service.normal.type.single.promotion
 
-import com.rosia.promotionservice.promotion.service.DataSource
+import com.rosia.promotionservice.promotion.service.normal.type.DataSource
 import com.rosia.promotionservice.promotion.service.Promotion
 import com.rosia.promotionservice.promotion.service.PromotionService
 import org.junit.Assert.assertEquals

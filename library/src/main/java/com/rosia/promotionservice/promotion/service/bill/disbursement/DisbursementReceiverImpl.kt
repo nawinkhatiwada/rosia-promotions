@@ -82,13 +82,13 @@ class DisbursementReceiverImpl(private val listener: PromotionListener) : Disbur
             taxableAmount = amountModel.taxableAmount
         )
         promotion.isApplied = true
-        val newDisbursement =
-            (promotion.skuList.filter { it.quantity > 0 }.sumBy { it.quantity } / promotion.skuCount).toDouble()
-
         promotion.newDisbursementValue = if (promotion.allowMultiple) {
-            ((promotion.skuList.count { it.quantity > 0 }) / promotion.criteriaMinValue) * newDisbursement
+            (promotion.skuList
+                .filter { it.quantity > 0 }
+                .sumBy { it.quantity } / promotion.criteriaMinValue) * (promotion.disbursementValue
+                ?: 0.0)
         } else {
-            newDisbursement
+            promotion.disbursementValue ?: 0.0
         }
         listener.getUpdatedPromotion(promotion, "")
     }

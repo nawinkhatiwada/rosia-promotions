@@ -1,6 +1,6 @@
-package com.rosia.promotionservice.promotion.service.normal.type.single
+package com.rosia.promotionservice.promotion.service.normal.type.single.promotion
 
-import com.rosia.promotionservice.promotion.service.DataSource
+import com.rosia.promotionservice.promotion.service.normal.type.DataSource
 import com.rosia.promotionservice.promotion.service.Promotion
 import com.rosia.promotionservice.promotion.service.PromotionService
 import org.junit.Assert.assertEquals
@@ -70,7 +70,10 @@ class SinglePromotionCriteriaQuantityServiceTest {
             promotionModel = DataSource.get_normal_single_quantity_amount_promotion_success(),
         )
 
+        println(promotion.promotionModel)
         // Then
+        assertEquals(true, promotion.promotionModel.isApplied)
+
         val sku = promotion.promotionModel.skuList.first()
         assertEquals(10.0, sku.discountAmount, 0.0)
         assertEquals(90.0, sku.taxableAmount, 0.0)

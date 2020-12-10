@@ -1,9 +1,12 @@
-package com.rosia.promotionservice.promotion.service
+package com.rosia.promotionservice.promotion.service.normal.type
 
+import com.rosia.promotionservice.promotion.data.ApplicableSkuLocalModel
 import com.rosia.promotionservice.promotion.data.DisbursementSkuModel
 import com.rosia.promotionservice.promotion.data.PromotionModel
 import com.rosia.promotionservice.promotion.data.PromotionSkuModel
 import com.rosia.promotionservice.promotion.data.SkuBatchModel
+import com.rosia.promotionservice.promotion.data.SkuFamilyCriteriaModel
+import com.rosia.promotionservice.promotion.service.PromotionConstant
 import com.rosia.promotionservice.promotion.service.bill.criteria.operator.OperatorConstants
 
 object DataSource {
@@ -42,6 +45,91 @@ object DataSource {
         )
     }
 
+
+    private fun getFakeApplicableSkuModelWithAmountCriteria(
+        skuId: Long = 1,
+        skuGroupId: Int = 1
+    ): ApplicableSkuLocalModel {
+        return ApplicableSkuLocalModel(
+            skuId = skuId,
+            criteriaType = PromotionConstant.CRITERIA_AMOUNT,
+            criteriaMaxOpr = OperatorConstants.GREATER_THAN_EQUALS,
+            criteriaMaxValue = 0,
+            criteriaMinOpr = OperatorConstants.GREATER_THAN_EQUALS,
+            criteriaMinValue = 0,
+            skuGroupId = skuGroupId,
+            familyStatus = false,
+            skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
+                familyId = 1,
+                promotionId = 1,
+                type = PromotionConstant.CRITERIA_AMOUNT,
+                maxType = OperatorConstants.GREATER_THAN_EQUALS,
+                maxValue = 0,
+                minType = OperatorConstants.GREATER_THAN_EQUALS,
+                minValue = 0,
+                skuCount = 0,
+                allowMultiple = false
+            ),
+            groupCriteriaLocalModel = null
+        )
+    }
+
+    private fun getFakeApplicableSkuModelWithCountCriteria(
+        skuId: Long = 1,
+        skuGroupId: Int = 1
+    ): ApplicableSkuLocalModel {
+        return ApplicableSkuLocalModel(
+            skuId = skuId,
+            criteriaType = PromotionConstant.CRITERIA_COUNT,
+            criteriaMaxOpr = OperatorConstants.GREATER_THAN_EQUALS,
+            criteriaMaxValue = 0,
+            criteriaMinOpr = OperatorConstants.GREATER_THAN_EQUALS,
+            criteriaMinValue = 0,
+            skuGroupId = skuGroupId,
+            familyStatus = false,
+            skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
+                familyId = 1,
+                promotionId = 1,
+                type = PromotionConstant.CRITERIA_AMOUNT,
+                maxType = OperatorConstants.GREATER_THAN_EQUALS,
+                maxValue = 0,
+                minType = OperatorConstants.GREATER_THAN_EQUALS,
+                minValue = 0,
+                skuCount = 0,
+                allowMultiple = false
+            ),
+            groupCriteriaLocalModel = null
+        )
+    }
+
+    private fun getFakeApplicableSkuModelWithQuantityCriteria(
+        skuId: Long = 1,
+        skuGroupId: Int = 1
+    ): ApplicableSkuLocalModel {
+        return ApplicableSkuLocalModel(
+            skuId = skuId,
+            criteriaType = PromotionConstant.CRITERIA_QUANTITY,
+            criteriaMaxOpr = OperatorConstants.GREATER_THAN_EQUALS,
+            criteriaMaxValue = 0,
+            criteriaMinOpr = OperatorConstants.GREATER_THAN_EQUALS,
+            criteriaMinValue = 0,
+            skuGroupId = skuGroupId,
+            familyStatus = false,
+            skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
+                familyId = 1,
+                promotionId = 1,
+                type = PromotionConstant.CRITERIA_AMOUNT,
+                maxType = OperatorConstants.GREATER_THAN_EQUALS,
+                maxValue = 0,
+                minType = OperatorConstants.GREATER_THAN_EQUALS,
+                minValue = 0,
+                skuCount = 0,
+                allowMultiple = false
+            ),
+            groupCriteriaLocalModel = null
+        )
+    }
+
     fun get_normal_single_quantity_percent_promotion_success(): PromotionModel {
 
         return PromotionModel(
@@ -59,6 +147,9 @@ object DataSource {
             disbursementValue = 5.0,
             applicableSkuIds = "1",
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithQuantityCriteria()
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(10)
             )
@@ -82,6 +173,9 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_PERCENT,
             disbursementValue = 5.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithQuantityCriteria()
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(1)
             )
@@ -106,6 +200,9 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_AMOUNT,
             disbursementValue = 10.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithQuantityCriteria()
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(10)
             )
@@ -129,6 +226,9 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_AMOUNT,
             disbursementValue = 100.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithQuantityCriteria()
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(1)
             )
@@ -153,6 +253,9 @@ object DataSource {
             disbursementValue = 1.0,
             allowMultiple = true,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithQuantityCriteria()
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(10)
             ),
@@ -187,6 +290,9 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_FREE_SKU,
             disbursementValue = 1.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithQuantityCriteria()
+            ),
             skuList = listOf(
                 PromotionSkuModel(
                     skuId = 1,
@@ -246,6 +352,9 @@ object DataSource {
             disbursementValue = 5.0,
             applicableSkuIds = "1",
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithAmountCriteria()
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(20)
             )
@@ -269,6 +378,9 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_PERCENT,
             disbursementValue = 5.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithAmountCriteria()
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(1)
             )
@@ -293,6 +405,9 @@ object DataSource {
             disbursementValue = 5.0,
             allowMultiple = true,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithAmountCriteria()
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(20)
             )
@@ -316,6 +431,9 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_AMOUNT,
             disbursementValue = 5.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithAmountCriteria()
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(1)
             )
@@ -340,6 +458,9 @@ object DataSource {
             disbursementValue = 1.0,
             allowMultiple = true,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithAmountCriteria()
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(20)
             ),
@@ -374,6 +495,9 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_FREE_SKU,
             disbursementValue = 1.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithAmountCriteria()
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(2)
 
@@ -399,6 +523,14 @@ object DataSource {
             disbursementValue = 5.0,
             applicableSkuIds = "1",
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithQuantityCriteria(
+                    skuId = 1
+                ),
+                getFakeApplicableSkuModelWithQuantityCriteria(
+                    skuId = 2
+                )
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(5),
                 getFakePromotionSkuModel(1)
@@ -423,7 +555,14 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_PERCENT,
             disbursementValue = 5.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
-            skuList = listOf(
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithQuantityCriteria(
+                    skuId = 1
+                ),
+                getFakeApplicableSkuModelWithQuantityCriteria(
+                    skuId = 2
+                )
+            ),skuList = listOf(
                 getFakePromotionSkuModel(1),
                 getFakePromotionSkuModel(1)
             )
@@ -447,6 +586,14 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_AMOUNT,
             disbursementValue = 100.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithQuantityCriteria(
+                    skuId = 1
+                ),
+                getFakeApplicableSkuModelWithQuantityCriteria(
+                    skuId = 2
+                )
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(1),
                 getFakePromotionSkuModel(2)
@@ -471,6 +618,14 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_AMOUNT,
             disbursementValue = 5.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithQuantityCriteria(
+                    skuId = 1
+                ),
+                getFakeApplicableSkuModelWithQuantityCriteria(
+                    skuId = 2
+                )
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(1),
                 getFakePromotionSkuModel(1)
@@ -496,6 +651,14 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_FREE_SKU,
             disbursementValue = 2.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithQuantityCriteria(
+                    skuId = 1
+                ),
+                getFakeApplicableSkuModelWithQuantityCriteria(
+                    skuId = 2
+                )
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(2),
                 getFakePromotionSkuModel(5)
@@ -530,6 +693,14 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_FREE_SKU,
             disbursementValue = 1.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithQuantityCriteria(
+                    skuId = 1
+                ),
+                getFakeApplicableSkuModelWithQuantityCriteria(
+                    skuId = 2
+                )
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(1),
                 getFakePromotionSkuModel(1)
@@ -555,6 +726,14 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_PERCENT,
             disbursementValue = 5.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithAmountCriteria(
+                    skuId = 1
+                ),
+                getFakeApplicableSkuModelWithAmountCriteria(
+                    skuId = 2
+                )
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(10),
                 getFakePromotionSkuModel(5)
@@ -579,7 +758,14 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_PERCENT,
             disbursementValue = 100.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
-            skuList = listOf(
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithAmountCriteria(
+                    skuId = 1
+                ),
+                getFakeApplicableSkuModelWithAmountCriteria(
+                    skuId = 2
+                )
+            ),skuList = listOf(
                 getFakePromotionSkuModel(1),
                 getFakePromotionSkuModel(1)
             )
@@ -604,6 +790,14 @@ object DataSource {
             disbursementValue = 10.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
             allowMultiple = true,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithAmountCriteria(
+                    skuId = 1
+                ),
+                getFakeApplicableSkuModelWithAmountCriteria(
+                    skuId = 2
+                )
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(5),
                 getFakePromotionSkuModel(5)
@@ -628,6 +822,14 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_AMOUNT,
             disbursementValue = 10.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithAmountCriteria(
+                    skuId = 1
+                ),
+                getFakeApplicableSkuModelWithAmountCriteria(
+                    skuId = 2
+                )
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(1),
                 getFakePromotionSkuModel(1)
@@ -653,6 +855,14 @@ object DataSource {
             allowMultiple = true,
             applicableSkuIds = "1,2",
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithAmountCriteria(
+                    skuId = 1
+                ),
+                getFakeApplicableSkuModelWithAmountCriteria(
+                    skuId = 2
+                )
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(20)
             ),
@@ -685,6 +895,14 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_FREE_SKU,
             disbursementValue = 1.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithAmountCriteria(
+                    skuId = 1
+                ),
+                getFakeApplicableSkuModelWithAmountCriteria(
+                    skuId = 2
+                )
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(1),
                 getFakePromotionSkuModel(1)
@@ -710,6 +928,14 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_PERCENT,
             disbursementValue = 5.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithCountCriteria(
+                    skuId = 1
+                ),
+                getFakeApplicableSkuModelWithCountCriteria(
+                    skuId = 2
+                )
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(5),
                 getFakePromotionSkuModel(1),
@@ -735,6 +961,14 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_PERCENT,
             disbursementValue = 1.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithCountCriteria(
+                    skuId = 1
+                ),
+                getFakeApplicableSkuModelWithCountCriteria(
+                    skuId = 2
+                )
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(1),
                 getFakePromotionSkuModel(1)
@@ -760,6 +994,14 @@ object DataSource {
             disbursementValue = 10.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
             allowMultiple = true,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithCountCriteria(
+                    skuId = 1
+                ),
+                getFakeApplicableSkuModelWithCountCriteria(
+                    skuId = 2
+                )
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(5),
                 getFakePromotionSkuModel(5),
@@ -788,6 +1030,14 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_AMOUNT,
             disbursementValue = 1.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithCountCriteria(
+                    skuId = 1
+                ),
+                getFakeApplicableSkuModelWithCountCriteria(
+                    skuId = 2
+                )
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(1),
                 getFakePromotionSkuModel(1)
@@ -813,6 +1063,14 @@ object DataSource {
             allowMultiple = true,
             applicableSkuIds = "1,2",
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithCountCriteria(
+                    skuId = 1
+                ),
+                getFakeApplicableSkuModelWithCountCriteria(
+                    skuId = 2
+                )
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(5),
                 getFakePromotionSkuModel(5),
@@ -851,6 +1109,14 @@ object DataSource {
             disbursementType = PromotionConstant.DISBURSEMENT_FREE_SKU,
             disbursementValue = 1.0,
             promotionType = PromotionConstant.PROMOTION_TYPE_NORMAL,
+            applicableSkuModelList = listOf(
+                getFakeApplicableSkuModelWithCountCriteria(
+                    skuId = 1
+                ),
+                getFakeApplicableSkuModelWithCountCriteria(
+                    skuId = 2
+                )
+            ),
             skuList = listOf(
                 getFakePromotionSkuModel(1),
                 getFakePromotionSkuModel(1)
