@@ -27,8 +27,8 @@ data class PromotionModel(
     @Ignore var skuList: List<PromotionSkuModel>,
     @Ignore var amountModel: BillAmountModel? = null,
     @Ignore var applicableSkuModelList: List<ApplicableSkuLocalModel>? = null,
-
-    @Ignore var newDisbursementValue: Double = 0.0
+    @Ignore var newDisbursementValue: Double = 0.0,
+    @Ignore var pricePerPcsIfPromotionApplies: Double = 0.0
 ) : Parcelable {
     constructor() : this(
         0,
@@ -85,7 +85,8 @@ data class PromotionSkuModel(
     @Ignore var taxableAmount: Double,
     @Ignore var orderId: Long,
     @Ignore var topUpDiscount: Double = 0.0,
-    @Ignore var stockQty: Int?
+    @Ignore var stockQty: Int?,
+    @Ignore var imageUrl: String? = ""
 ) : Parcelable {
     constructor() : this(0, "", "", 0, 0, false, true, null, 0.0, 0.0, 0.0, 0.0, 0.0, 0L, 0.0, 0)
 }
@@ -94,11 +95,14 @@ data class PromotionSkuModel(
 data class SkuBatchModel(
     var id: Long,
     var rlpVat: Double,
-    var batchTitle: String,
     var isSelected: Boolean,
     var rlp: Double,
-    var vatPercent: Double
-) : Parcelable
+    var vatPercent: Double,
+    @Ignore var batchTitle: String,
+    @Ignore var mrp: Double = 0.0
+) : Parcelable {
+    constructor() : this(0, 0.0, false, 0.0, 0.0, "", 0.0)
+}
 
 @Parcelize
 data class BillAmountModel(
@@ -122,18 +126,8 @@ data class ApplicableSkuLocalModel(
     @Ignore var groupCriteriaLocalModel: PromotionSkuGroupModel?, // map this model with PromotionSkuGroupEntity
     @Ignore var skuFamilyCriteriaModel: SkuFamilyCriteriaModel?
 ) : Parcelable {
-    constructor() : this(0, "", "", 0, "", 0, 0, false,null, null)
+    constructor() : this(0, "", "", 0, "", 0, 0, false, null, null)
 }
-
-@Parcelize
-data class CriteriaLocalModel(
-    var criteriaType: String,
-    var criteriaMaxOpr: String,
-    var criteriaMaxValue: Int,
-    var criteriaMinOpr: String,
-    var criteriaMinValue: Int,
-    var skuGroupId: Int
-) : Parcelable
 
 @Parcelize
 data class PromotionSkuGroupModel(
