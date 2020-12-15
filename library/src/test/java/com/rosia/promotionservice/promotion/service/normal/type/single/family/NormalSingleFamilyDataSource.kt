@@ -1,8 +1,6 @@
 package com.rosia.promotionservice.promotion.service.normal.type.single.family
 
 import com.rosia.promotionservice.promotion.data.ApplicableSkuLocalModel
-import com.rosia.promotionservice.promotion.data.CriteriaLocalModel
-import com.rosia.promotionservice.promotion.data.DisbursementSkuModel
 import com.rosia.promotionservice.promotion.data.PromotionModel
 import com.rosia.promotionservice.promotion.data.PromotionSkuModel
 import com.rosia.promotionservice.promotion.data.SkuBatchModel
