@@ -1,6 +1,10 @@
 package com.rosia.promotionservice.promotion.service
 
-import com.rosia.promotionservice.promotion.data.*
+import com.rosia.promotionservice.promotion.data.ApplicableSkuLocalModel
+import com.rosia.promotionservice.promotion.data.PromotionModel
+import com.rosia.promotionservice.promotion.data.PromotionSkuGroupModel
+import com.rosia.promotionservice.promotion.data.PromotionSkuModel
+import com.rosia.promotionservice.promotion.data.SkuFamilyCriteriaModel
 import com.rosia.promotionservice.promotion.service.bill.criteria.operator.OperatorHandler
 
 fun checkMOQValidation(promotionModel: PromotionModel): Pair<Boolean, String> {
@@ -15,12 +19,19 @@ fun checkMOQValidation(promotionModel: PromotionModel): Pair<Boolean, String> {
         if (!isValidSku.first)
             return isValidSku
 
-        val familyCriteria = skuList.first().skuFamilyCriteriaModel
         if (skuList.first().familyStatus) {
-            familyCriteria?.let {
-                val isValidSkuFamily = handleSkuFamilyCriteria(orderedSKUList, it)
-                if (!isValidSkuFamily.first)
-                    return isValidSkuFamily
+            val familyGroup = skuList.groupBy { it.familyId ?: 0 }
+            familyGroup.forEach { (familyId, skuFamilyList) ->
+                val applicableFamilySKUs = skuFamilyList.map { it.skuId }
+                val orderedFamilySKUList = promotionModel.skuList.filter { it.skuId in applicableFamilySKUs }
+
+                if (skuFamilyList.first().familyStatus) {
+                    skuFamilyList.first().skuFamilyCriteriaModel?.let {
+                        val isValidSkuFamily = handleSkuFamilyCriteria(orderedFamilySKUList, it)
+                        if (!isValidSkuFamily.first)
+                            return isValidSkuFamily
+                    }
+                }
             }
         }
 
@@ -173,7 +184,7 @@ fun handleSkuFamilyCriteria(
             ((it.batchList?.filter { it.isSelected }?.first()?.rlpVat) ?: 0.0).times(it.quantity)
         }
         val isValid =
-           OperatorHandler.isCriteriaValid(
+            OperatorHandler.isCriteriaValid(
                 totalAmount,
                 familyCriteria.minValue.toDouble(),
                 familyCriteria.minType,

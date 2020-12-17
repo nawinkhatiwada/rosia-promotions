@@ -1,6 +1,10 @@
 package com.rosia.promotionservice.promotion.service.bill.single.promotion
 
-import com.rosia.promotionservice.promotion.data.*
+import com.rosia.promotionservice.promotion.data.ApplicableSkuLocalModel
+import com.rosia.promotionservice.promotion.data.PromotionModel
+import com.rosia.promotionservice.promotion.data.PromotionSkuModel
+import com.rosia.promotionservice.promotion.data.SkuBatchModel
+import com.rosia.promotionservice.promotion.data.SkuFamilyCriteriaModel
 import com.rosia.promotionservice.promotion.service.PromotionConstant
 import com.rosia.promotionservice.promotion.service.bill.criteria.operator.OperatorConstants
 
@@ -232,7 +236,6 @@ object BillSinglePromotionDataSource {
         )
     }
 
-
     private fun getFakeFamilyPromotionSkuModel(
         quantity: Int,
         isSelected: Boolean = true,
@@ -294,6 +297,7 @@ object BillSinglePromotionDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -344,6 +348,7 @@ object BillSinglePromotionDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -366,6 +371,7 @@ object BillSinglePromotionDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,

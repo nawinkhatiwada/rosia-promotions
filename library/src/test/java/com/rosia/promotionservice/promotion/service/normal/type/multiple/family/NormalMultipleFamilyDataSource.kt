@@ -70,6 +70,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -92,6 +93,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -139,6 +141,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -161,6 +164,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -207,6 +211,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -229,6 +234,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -276,6 +282,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -298,6 +305,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -345,6 +353,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -367,6 +376,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -414,6 +424,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -436,6 +447,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -484,6 +496,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -506,6 +519,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -554,6 +568,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -576,6 +591,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -624,6 +640,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -646,6 +663,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -694,6 +712,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -716,6 +735,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -764,6 +784,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -786,6 +807,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -834,6 +856,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -856,6 +879,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -904,6 +928,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -926,6 +951,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -948,7 +974,7 @@ object NormalMultipleFamilyDataSource {
     }
 
     fun get_count_amount_error(): PromotionModel {
-        return  PromotionModel(
+        return PromotionModel(
             promotionId = 1,
             title = "Buy 2 unique skus of sku family and get 10 rsoff",
             promotionState = PromotionConstant.MULTIPLE_PROMOTION,
@@ -974,6 +1000,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -996,6 +1023,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -1017,7 +1045,7 @@ object NormalMultipleFamilyDataSource {
     }
 
     fun get_count_percent_success(): PromotionModel {
-        return  PromotionModel(
+        return PromotionModel(
             promotionId = 1,
             title = "Buy 2 unique skus of sku family and get 10 rsoff",
             promotionState = PromotionConstant.MULTIPLE_PROMOTION,
@@ -1043,6 +1071,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -1065,6 +1094,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -1088,7 +1118,7 @@ object NormalMultipleFamilyDataSource {
     }
 
     fun get_count_percent_error(): PromotionModel {
-        return  PromotionModel(
+        return PromotionModel(
             promotionId = 1,
             title = "Buy 2 unique skus of sku family and get 10 rsoff",
             promotionState = PromotionConstant.MULTIPLE_PROMOTION,
@@ -1114,6 +1144,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -1136,6 +1167,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -1184,6 +1216,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -1206,6 +1239,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -1229,7 +1263,7 @@ object NormalMultipleFamilyDataSource {
     }
 
     fun get_count_sku_error(): PromotionModel {
-        return  PromotionModel(
+        return PromotionModel(
             promotionId = 1,
             title = "Buy 2 unique skus of sku family and get 1 free sku ",
             promotionState = PromotionConstant.MULTIPLE_PROMOTION,
@@ -1255,6 +1289,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -1277,6 +1312,7 @@ object NormalMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -1297,5 +1333,4 @@ object NormalMultipleFamilyDataSource {
             )
         )
     }
-
 }

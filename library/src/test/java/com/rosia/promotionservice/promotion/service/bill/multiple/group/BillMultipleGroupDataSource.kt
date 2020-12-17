@@ -8,7 +8,6 @@ import com.rosia.promotionservice.promotion.data.SkuBatchModel
 import com.rosia.promotionservice.promotion.data.SkuFamilyCriteriaModel
 import com.rosia.promotionservice.promotion.service.PromotionConstant
 import com.rosia.promotionservice.promotion.service.bill.criteria.operator.OperatorConstants
-import com.rosia.promotionservice.promotion.service.bill.multiple.promotion.BillMultiplePromotionDataSource
 
 object BillMultipleGroupDataSource {
 
@@ -62,6 +61,7 @@ object BillMultipleGroupDataSource {
             criteriaMinValue = 0,
             skuGroupId = skuGroupId,
             familyStatus = true,
+            familyId = -1,
             skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                 familyId = 1,
                 promotionId = 1,
@@ -105,6 +105,7 @@ object BillMultipleGroupDataSource {
             criteriaMinValue = 0,
             skuGroupId = skuGroupId,
             familyStatus = true,
+            familyId = -1,
             skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                 familyId = 1,
                 promotionId = 1,
@@ -137,7 +138,10 @@ object BillMultipleGroupDataSource {
         skuGroupId: Int = 1,
         groupSkuIds: String = "1,2",
         groupMinMax: Int = 5,
-        groupId: Long = 1
+        groupId: Long = 1,
+        familyId: Long = -1,
+        familyStatus: Boolean = false,
+        familyMinMax: Int = 0
     ): ApplicableSkuLocalModel {
         return ApplicableSkuLocalModel(
             skuId = skuId,
@@ -147,15 +151,16 @@ object BillMultipleGroupDataSource {
             criteriaMinOpr = OperatorConstants.GREATER_THAN_EQUALS,
             criteriaMinValue = 0,
             skuGroupId = skuGroupId,
-            familyStatus = false,
+            familyStatus = familyStatus,
+            familyId = familyId,
             skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
-                familyId = 1,
+                familyId = familyId,
                 promotionId = 1,
-                type = PromotionConstant.CRITERIA_AMOUNT,
+                type = PromotionConstant.CRITERIA_QUANTITY,
                 maxType = OperatorConstants.GREATER_THAN_EQUALS,
-                maxValue = 0,
+                maxValue = familyMinMax,
                 minType = OperatorConstants.GREATER_THAN_EQUALS,
-                minValue = 0,
+                minValue = familyMinMax,
                 skuCount = 0,
                 allowMultiple = false
             ),
@@ -174,7 +179,6 @@ object BillMultipleGroupDataSource {
             )
         )
     }
-
 
     fun get_amount_amount_success(): PromotionModel {
         return PromotionModel(
@@ -559,23 +563,46 @@ object BillMultipleGroupDataSource {
             applicableSkuIds = "1,2",
             promotionType = PromotionConstant.PROMOTION_TYPE_CURRENT_BILL,
             skuList = listOf(
-                getFakeGroupPromotionSkuModel(quantity = 100, skuId = 1),
-                getFakeGroupPromotionSkuModel(quantity = 100, skuId = 2),
-                getFakeGroupPromotionSkuModel(quantity = 200, skuId = 3),
+                getFakeGroupPromotionSkuModel(quantity = 50, skuId = 1),
+                getFakeGroupPromotionSkuModel(quantity = 50, skuId = 2),
                 getFakeGroupPromotionSkuModel(quantity = 200, skuId = 4)
             ),
             applicableSkuModelList = listOf(
-                getFakeApplicableSkuModelWithGroupCountCriteria(1,
+                getFakeApplicableSkuModelWithGroupCountCriteria(
+                    1,
                     skuGroupId = 1,
                     groupId = 1,
                     groupSkuIds = "1,2",
-                    groupMinMax = 1000
+                    groupMinMax = 1000,
+                    familyId = 1,
+                    familyStatus = true,
+                    familyMinMax = 10
+                ),
+                getFakeApplicableSkuModelWithGroupCountCriteria(
+                    2,
+                    skuGroupId = 1,
+                    groupId = 1,
+                    groupSkuIds = "1,2",
+                    groupMinMax = 1000,
+                    familyId = 1,
+                    familyStatus = true,
+                    familyMinMax = 10
                 ),
                 getFakeApplicableSkuModelWithGroupCountCriteria(
                     3,
+                    skuGroupId = 1,
+                    groupId = 1,
+                    groupSkuIds = "3",
+                    groupMinMax = 1000,
+                    familyId = 2,
+                    familyStatus = true,
+                    familyMinMax = 0
+                ),
+                getFakeApplicableSkuModelWithGroupCountCriteria(
+                    4,
                     skuGroupId = 2,
                     groupId = 2,
-                    groupSkuIds = "3,4",
+                    groupSkuIds = "4",
                     groupMinMax = 2000
                 ),
             )
@@ -591,9 +618,9 @@ object BillMultipleGroupDataSource {
             criteriaId = 1,
             criteriaType = PromotionConstant.CRITERIA_GROUP_COUNT,
             criteriaMaxOpr = OperatorConstants.GREATER_THAN_EQUALS,
-            criteriaMaxValue = 1,
+            criteriaMaxValue = 2,
             criteriaMinOpr = OperatorConstants.GREATER_THAN_EQUALS,
-            criteriaMinValue = 1,
+            criteriaMinValue = 2,
             skuCount = 1,
             disbursementType = PromotionConstant.DISBURSEMENT_PERCENT,
             disbursementValue = 10.0,
@@ -601,12 +628,11 @@ object BillMultipleGroupDataSource {
             promotionType = PromotionConstant.PROMOTION_TYPE_CURRENT_BILL,
             skuList = listOf(
                 getFakeGroupPromotionSkuModel(quantity = 1, skuId = 1),
-                getFakeGroupPromotionSkuModel(quantity = 1, skuId = 2),
-                getFakeGroupPromotionSkuModel(quantity = 2, skuId = 3),
-                getFakeGroupPromotionSkuModel(quantity = 2, skuId = 4)
+                getFakeGroupPromotionSkuModel(quantity = 1, skuId = 2)
             ),
             applicableSkuModelList = listOf(
-                getFakeApplicableSkuModelWithGroupCountCriteria(1,
+                getFakeApplicableSkuModelWithGroupCountCriteria(
+                    1,
                     skuGroupId = 1,
                     groupId = 1,
                     groupSkuIds = "1,2",
@@ -638,7 +664,7 @@ object BillMultipleGroupDataSource {
             skuCount = 1,
             disbursementType = PromotionConstant.DISBURSEMENT_PERCENT,
             disbursementValue = 10.0,
-            applicableSkuIds = "1,2",
+            applicableSkuIds = "1,2,3,4",
             promotionType = PromotionConstant.PROMOTION_TYPE_CURRENT_BILL,
             skuList = listOf(
                 getFakeGroupPromotionSkuModel(quantity = 100, skuId = 1),
@@ -647,7 +673,14 @@ object BillMultipleGroupDataSource {
                 getFakeGroupPromotionSkuModel(quantity = 200, skuId = 4)
             ),
             applicableSkuModelList = listOf(
-                getFakeApplicableSkuModelWithGroupCountCriteria(1,
+                getFakeApplicableSkuModelWithGroupCountCriteria(
+                    1,
+                    skuGroupId = 1,
+                    groupId = 1,
+                    groupSkuIds = "1,2",
+                    groupMinMax = 1000
+                ), getFakeApplicableSkuModelWithGroupCountCriteria(
+                    2,
                     skuGroupId = 1,
                     groupId = 1,
                     groupSkuIds = "1,2",
@@ -655,6 +688,13 @@ object BillMultipleGroupDataSource {
                 ),
                 getFakeApplicableSkuModelWithGroupCountCriteria(
                     3,
+                    skuGroupId = 2,
+                    groupId = 2,
+                    groupSkuIds = "3,4",
+                    groupMinMax = 2000
+                ),
+                getFakeApplicableSkuModelWithGroupCountCriteria(
+                    4,
                     skuGroupId = 2,
                     groupId = 2,
                     groupSkuIds = "3,4",
@@ -688,7 +728,8 @@ object BillMultipleGroupDataSource {
                 getFakeGroupPromotionSkuModel(quantity = 2, skuId = 4)
             ),
             applicableSkuModelList = listOf(
-                getFakeApplicableSkuModelWithGroupCountCriteria(1,
+                getFakeApplicableSkuModelWithGroupCountCriteria(
+                    1,
                     skuGroupId = 1,
                     groupId = 1,
                     groupSkuIds = "1,2",
@@ -704,5 +745,4 @@ object BillMultipleGroupDataSource {
             )
         )
     }
-
 }

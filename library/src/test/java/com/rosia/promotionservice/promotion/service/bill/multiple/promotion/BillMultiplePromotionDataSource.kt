@@ -60,6 +60,7 @@ object BillMultiplePromotionDataSource {
             criteriaMinValue = 0,
             skuGroupId = skuGroupId,
             familyStatus = true,
+            familyId = -1,
             skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                 familyId = 1,
                 promotionId = 1,
@@ -102,6 +103,7 @@ object BillMultiplePromotionDataSource {
             criteriaMinValue = 0,
             skuGroupId = skuGroupId,
             familyStatus = false,
+            familyId = -1,
             skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                 familyId = 1,
                 promotionId = 1,
@@ -252,6 +254,7 @@ object BillMultiplePromotionDataSource {
             criteriaMaxValue = 5,
             skuGroupId = skuGroupId,
             familyStatus = false,
+            familyId = -1,
             skuFamilyCriteriaModel = null,
             groupCriteriaLocalModel = PromotionSkuGroupModel(
                 id = skuGroupId.toLong(),

@@ -1,6 +1,10 @@
 package com.rosia.promotionservice.promotion.service.topup.multiple.promotion
 
-import com.rosia.promotionservice.promotion.data.*
+import com.rosia.promotionservice.promotion.data.ApplicableSkuLocalModel
+import com.rosia.promotionservice.promotion.data.PromotionModel
+import com.rosia.promotionservice.promotion.data.PromotionSkuGroupModel
+import com.rosia.promotionservice.promotion.data.PromotionSkuModel
+import com.rosia.promotionservice.promotion.data.SkuBatchModel
 import com.rosia.promotionservice.promotion.service.PromotionConstant
 import com.rosia.promotionservice.promotion.service.bill.criteria.operator.OperatorConstants
 
@@ -57,6 +61,7 @@ object TopupMultiplePromotionDataSource {
             criteriaMaxValue = 5,
             skuGroupId = skuGroupId,
             familyStatus = false,
+            familyId = -1,
             skuFamilyCriteriaModel = null,
             groupCriteriaLocalModel = PromotionSkuGroupModel(
                 id = skuGroupId.toLong(),
@@ -90,6 +95,7 @@ object TopupMultiplePromotionDataSource {
             criteriaMaxValue = 50,
             skuGroupId = skuGroupId,
             familyStatus = false,
+            familyId = -1,
             skuFamilyCriteriaModel = null,
             groupCriteriaLocalModel = PromotionSkuGroupModel(
                 id = skuGroupId.toLong(),

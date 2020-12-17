@@ -70,6 +70,7 @@ object NormalSingleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = 1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -116,6 +117,7 @@ object NormalSingleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = 1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -162,6 +164,7 @@ object NormalSingleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = 1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -208,6 +211,7 @@ object NormalSingleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = 1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -254,6 +258,7 @@ object NormalSingleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = 1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -300,6 +305,7 @@ object NormalSingleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = 1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -347,6 +353,7 @@ object NormalSingleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = 1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -394,6 +401,7 @@ object NormalSingleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = 1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -441,6 +449,7 @@ object NormalSingleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = 1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -488,6 +497,7 @@ object NormalSingleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = 1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -535,6 +545,7 @@ object NormalSingleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = 1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -550,7 +561,7 @@ object NormalSingleFamilyDataSource {
                 )
             ),
             skuList = listOf(
-                getFakeFamilyPromotionSkuModel(quantity = 17    , skuId = 1)
+                getFakeFamilyPromotionSkuModel(quantity = 17, skuId = 1)
             )
         )
     }
@@ -582,6 +593,7 @@ object NormalSingleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = 1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -601,5 +613,4 @@ object NormalSingleFamilyDataSource {
             )
         )
     }
-
 }

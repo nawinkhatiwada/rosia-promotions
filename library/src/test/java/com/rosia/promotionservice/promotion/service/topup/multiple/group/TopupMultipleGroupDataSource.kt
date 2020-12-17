@@ -61,6 +61,7 @@ object TopupMultipleGroupDataSource {
             criteriaMinValue = 0,
             skuGroupId = skuGroupId,
             familyStatus = true,
+            familyId = -1,
             skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                 familyId = 1,
                 promotionId = 1,
@@ -104,6 +105,7 @@ object TopupMultipleGroupDataSource {
             criteriaMinValue = 0,
             skuGroupId = skuGroupId,
             familyStatus = true,
+            familyId = -1,
             skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                 familyId = 1,
                 promotionId = 1,

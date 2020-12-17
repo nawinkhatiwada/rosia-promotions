@@ -21,14 +21,22 @@ fun checkGroupMOQValidation(promotionModel: PromotionModel): Pair<Int, String> {
         if (!isValidSku.first)
             return@loop
 
-        val familyCriteria = skuList.first().skuFamilyCriteriaModel
         if (skuList.first().familyStatus) {
-            familyCriteria?.let {
-                val isValidSkuFamily = handleSkuFamilyCriteria(orderedSKUList, it)
-                if (!isValidSkuFamily.first)
-                    return@loop
+            val familyGroup = skuList.groupBy { it.familyId ?: 0 }
+            familyGroup.forEach { (familyId, skuFamilyList) ->
+                val applicableFamilySKUs = skuFamilyList.map { it.skuId }
+                val orderedFamilySKUList = promotionModel.skuList.filter { it.skuId in applicableFamilySKUs }
+
+                if (skuFamilyList.first().familyStatus) {
+                    skuFamilyList.first().skuFamilyCriteriaModel?.let {
+                        val isValidSkuFamily = handleSkuFamilyCriteria(orderedFamilySKUList, it)
+                        if (!isValidSkuFamily.first)
+                            return@loop
+                    }
+                }
             }
         }
+
         // groupCriteria NULL means its normal promotion without custom group
         val groupCriteria = skuList.first().groupCriteriaLocalModel
         groupCriteria?.let {

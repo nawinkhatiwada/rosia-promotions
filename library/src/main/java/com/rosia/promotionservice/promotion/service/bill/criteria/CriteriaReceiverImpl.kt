@@ -278,15 +278,15 @@ class CriteriaReceiverImpl(private val listener: PromotionListener) : CriteriaRe
 
     override fun handleGroupCountMultipleCriteriaUseCase(promotion: PromotionModel): Boolean {
         val groupMoqValidation = checkGroupMOQValidation(promotion)
-        val selectedSkuCount = groupMoqValidation.first
-        val isValid = selectedSkuCount > 0
+        val selectedGroupCount = groupMoqValidation.first
+        val isValid = selectedGroupCount > 0
         if (isValid) {
             if (isValid) {
                 when (promotion.disbursementType) {
                     PromotionConstant.DISBURSEMENT_PERCENT -> {
                         promotion.newDisbursementValue =
-                            if (selectedSkuCount < promotion.criteriaMaxValue) {
-                                (selectedSkuCount * (promotion.disbursementValue ?: 0.0))
+                            if (selectedGroupCount < promotion.criteriaMaxValue) {
+                                (selectedGroupCount * (promotion.disbursementValue ?: 0.0))
                             } else {
                                 promotion.criteriaMaxValue * (promotion.disbursementValue ?: 0.0)
                             }

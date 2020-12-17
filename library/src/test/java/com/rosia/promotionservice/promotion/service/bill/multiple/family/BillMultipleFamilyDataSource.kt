@@ -48,6 +48,7 @@ object BillMultipleFamilyDataSource {
         skuId: Long,
         skuGroupId: Int = 1,
         minMax: Int = 2000,
+        familyId: Long =1,
         applicableSkuGroupIds: String = "1,2,3",
         skuMoq: Int = 50,
         skuGroupMoq: Int = 100
@@ -61,8 +62,9 @@ object BillMultipleFamilyDataSource {
             criteriaMinValue = 0,
             skuGroupId = skuGroupId,
             familyStatus = true,
+            familyId = familyId,
             skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
-                familyId = 1,
+                familyId = familyId,
                 promotionId = 1,
                 type = PromotionConstant.CRITERIA_AMOUNT,
                 maxType = OperatorConstants.GREATER_THAN_EQUALS,
@@ -80,6 +82,7 @@ object BillMultipleFamilyDataSource {
         skuId: Long,
         skuGroupId: Int = 1,
         minMax: Int = 10,
+        familyId: Long = -1,
         applicableSkuGroupIds: String = "1,2,3",
         skuMoq: Int = 50,
         skuGroupMoq: Int = 100
@@ -93,6 +96,7 @@ object BillMultipleFamilyDataSource {
             criteriaMinValue = 0,
             skuGroupId = skuGroupId,
             familyStatus = true,
+            familyId = familyId,
             skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                 familyId = 1,
                 promotionId = 1,
@@ -121,18 +125,18 @@ object BillMultipleFamilyDataSource {
             criteriaMinValue = 2000,
             skuCount = 0,
             disbursementType = PromotionConstant.DISBURSEMENT_AMOUNT,
-            disbursementValue = 0.0,
+            disbursementValue = 10.0,
             applicableSkuIds = "1,2,3",
             promotionType = PromotionConstant.PROMOTION_TYPE_CURRENT_BILL,
             applicableSkuModelList = listOf(
-                getFakeApplicableSkuModelWithAmountCriteria(skuId = 1, minMax = 3000),
-                getFakeApplicableSkuModelWithAmountCriteria(skuId = 2, minMax = 3000),
-                getFakeApplicableSkuModelWithAmountCriteria(skuId = 3, minMax = 3000)
+                getFakeApplicableSkuModelWithAmountCriteria(skuId = 1, minMax = 3000, familyId = 1),
+                getFakeApplicableSkuModelWithAmountCriteria(skuId = 2, minMax = 3000, familyId = 1),
+                getFakeApplicableSkuModelWithAmountCriteria(skuId = 3, minMax = 3000, familyId = 2)
             ),
             skuList = listOf(
                 getFakeFamilyPromotionSkuModel(quantity = 50, skuId = 1),
-                getFakeFamilyPromotionSkuModel(quantity = 150, skuId = 2),
-                getFakeFamilyPromotionSkuModel(quantity = 100, skuId = 3)
+                getFakeFamilyPromotionSkuModel(quantity = 250, skuId = 2),
+                getFakeFamilyPromotionSkuModel(quantity = 300, skuId = 3)
             )
         )
     }
@@ -154,14 +158,14 @@ object BillMultipleFamilyDataSource {
             applicableSkuIds = "1,2,3",
             promotionType = PromotionConstant.PROMOTION_TYPE_CURRENT_BILL,
             applicableSkuModelList = listOf(
-                getFakeApplicableSkuModelWithAmountCriteria(skuId = 1, minMax = 3000),
-                getFakeApplicableSkuModelWithAmountCriteria(skuId = 2, minMax = 3000),
-                getFakeApplicableSkuModelWithAmountCriteria(skuId = 3, minMax = 3000)
+                getFakeApplicableSkuModelWithAmountCriteria(skuId = 1, minMax = 3000, familyId = 1),
+                getFakeApplicableSkuModelWithAmountCriteria(skuId = 2, minMax = 3000, familyId = 1),
+                getFakeApplicableSkuModelWithAmountCriteria(skuId = 3, minMax = 1000, familyId = 2)
             ),
             skuList = listOf(
-                getFakeFamilyPromotionSkuModel(quantity = 50, skuId = 1),
-                getFakeFamilyPromotionSkuModel(quantity = 50, skuId = 2),
-                getFakeFamilyPromotionSkuModel(quantity = 100, skuId = 3)
+                getFakeFamilyPromotionSkuModel(quantity = 150, skuId = 1),
+                getFakeFamilyPromotionSkuModel(quantity = 150, skuId = 2),
+                getFakeFamilyPromotionSkuModel(quantity = 10, skuId = 3)
             )
         )
     }
@@ -183,13 +187,13 @@ object BillMultipleFamilyDataSource {
             applicableSkuIds = "1,2,3",
             promotionType = PromotionConstant.PROMOTION_TYPE_CURRENT_BILL,
             applicableSkuModelList = listOf(
-                getFakeApplicableSkuModelWithAmountCriteria(skuId = 1, minMax = 3000),
-                getFakeApplicableSkuModelWithAmountCriteria(skuId = 2, minMax = 3000),
-                getFakeApplicableSkuModelWithAmountCriteria(skuId = 3, minMax = 3000)
+                getFakeApplicableSkuModelWithAmountCriteria(skuId = 1, minMax = 3000, familyId = 1),
+                getFakeApplicableSkuModelWithAmountCriteria(skuId = 2, minMax = 3000, familyId = 1),
+                getFakeApplicableSkuModelWithAmountCriteria(skuId = 3, minMax = 1000, familyId = 2)
             ),
             skuList = listOf(
                 getFakeFamilyPromotionSkuModel(quantity = 50, skuId = 1),
-                getFakeFamilyPromotionSkuModel(quantity = 150, skuId = 2),
+                getFakeFamilyPromotionSkuModel(quantity = 250, skuId = 2),
                 getFakeFamilyPromotionSkuModel(quantity = 100, skuId = 3)
             )
         )
@@ -212,12 +216,12 @@ object BillMultipleFamilyDataSource {
             applicableSkuIds = "1,2,3",
             promotionType = PromotionConstant.PROMOTION_TYPE_CURRENT_BILL,
             applicableSkuModelList = listOf(
-                getFakeApplicableSkuModelWithAmountCriteria(skuId = 1, minMax = 3000),
-                getFakeApplicableSkuModelWithAmountCriteria(skuId = 2, minMax = 3000),
-                getFakeApplicableSkuModelWithAmountCriteria(skuId = 3, minMax = 3000)
+                getFakeApplicableSkuModelWithAmountCriteria(skuId = 1, minMax = 3000, familyId = 1),
+                getFakeApplicableSkuModelWithAmountCriteria(skuId = 2, minMax = 3000, familyId = 1),
+                getFakeApplicableSkuModelWithAmountCriteria(skuId = 3, minMax = 1000, familyId = 2)
             ),
             skuList = listOf(
-                getFakeFamilyPromotionSkuModel(quantity = 100, skuId = 1),
+                getFakeFamilyPromotionSkuModel(quantity = 200, skuId = 1),
                 getFakeFamilyPromotionSkuModel(quantity = 100, skuId = 2)
             )
         )
@@ -240,13 +244,13 @@ object BillMultipleFamilyDataSource {
             applicableSkuIds = "1,2,3",
             promotionType = PromotionConstant.PROMOTION_TYPE_CURRENT_BILL,
             applicableSkuModelList = listOf(
-                getFakeApplicableSkuModelWithAmountCriteria(skuId = 1, minMax = 3000),
-                getFakeApplicableSkuModelWithAmountCriteria(skuId = 2, minMax = 3000),
-                getFakeApplicableSkuModelWithAmountCriteria(skuId = 3, minMax = 3000)
+                getFakeApplicableSkuModelWithAmountCriteria(skuId = 1, minMax = 3000, familyId = 1),
+                getFakeApplicableSkuModelWithAmountCriteria(skuId = 2, minMax = 3000, familyId = 1),
+                getFakeApplicableSkuModelWithAmountCriteria(skuId = 3, minMax = 1000, familyId = 2)
             ),
             skuList = listOf(
                 getFakeFamilyPromotionSkuModel(quantity = 50, skuId = 1),
-                getFakeFamilyPromotionSkuModel(quantity = 150, skuId = 2),
+                getFakeFamilyPromotionSkuModel(quantity = 250, skuId = 2),
                 getFakeFamilyPromotionSkuModel(quantity = 100, skuId = 3)
             )
         )
@@ -269,9 +273,9 @@ object BillMultipleFamilyDataSource {
             applicableSkuIds = "1,2",
             promotionType = PromotionConstant.PROMOTION_TYPE_CURRENT_BILL,
             applicableSkuModelList = listOf(
-                getFakeApplicableSkuModelWithAmountCriteria(skuId = 1, minMax = 3000),
-                getFakeApplicableSkuModelWithAmountCriteria(skuId = 2, minMax = 3000),
-                getFakeApplicableSkuModelWithAmountCriteria(skuId = 3, minMax = 3000)
+                getFakeApplicableSkuModelWithAmountCriteria(skuId = 1, minMax = 3000, familyId = 1),
+                getFakeApplicableSkuModelWithAmountCriteria(skuId = 2, minMax = 3000, familyId = 1),
+                getFakeApplicableSkuModelWithAmountCriteria(skuId = 3, minMax = 1000, familyId = 2)
             ),
             skuList = listOf(
                 getFakeFamilyPromotionSkuModel(quantity = 200, skuId = 1)
@@ -298,14 +302,14 @@ object BillMultipleFamilyDataSource {
             promotionType = PromotionConstant.PROMOTION_TYPE_CURRENT_BILL,
             allowMultiple = false,
             applicableSkuModelList = listOf(
-                getFakeApplicableSkuModelWithQuantityCriteria(skuId = 1, minMax = 20),
-                getFakeApplicableSkuModelWithQuantityCriteria(skuId = 2, minMax = 20),
-                getFakeApplicableSkuModelWithQuantityCriteria(skuId = 3, minMax = 20)
+                getFakeApplicableSkuModelWithQuantityCriteria(skuId = 1, minMax = 20, familyId = 1),
+                getFakeApplicableSkuModelWithQuantityCriteria(skuId = 2, minMax = 20, familyId = 2),
+                getFakeApplicableSkuModelWithQuantityCriteria(skuId = 3, minMax = 0, familyId = 3)
             ),
             skuList = listOf(
-                getFakeFamilyPromotionSkuModel(quantity = 10, skuId = 1),
-                getFakeFamilyPromotionSkuModel(quantity = 15, skuId = 2),
-                getFakeFamilyPromotionSkuModel(quantity = 5, skuId = 3)
+                getFakeFamilyPromotionSkuModel(quantity = 20, skuId = 1),
+                getFakeFamilyPromotionSkuModel(quantity = 20, skuId = 2),
+                getFakeFamilyPromotionSkuModel(quantity = 20, skuId = 3)
             )
         )
     }
@@ -328,14 +332,14 @@ object BillMultipleFamilyDataSource {
             promotionType = PromotionConstant.PROMOTION_TYPE_CURRENT_BILL,
             allowMultiple = true,
             applicableSkuModelList = listOf(
-                getFakeApplicableSkuModelWithQuantityCriteria(skuId = 1, minMax = 20),
-                getFakeApplicableSkuModelWithQuantityCriteria(skuId = 2, minMax = 20),
-                getFakeApplicableSkuModelWithQuantityCriteria(skuId = 3, minMax = 20)
+                getFakeApplicableSkuModelWithQuantityCriteria(skuId = 1, minMax = 20, familyId = 1),
+                getFakeApplicableSkuModelWithQuantityCriteria(skuId = 2, minMax = 20, familyId = 2),
+                getFakeApplicableSkuModelWithQuantityCriteria(skuId = 3, minMax = 20, familyId = 3)
             ),
             skuList = listOf(
                 getFakeFamilyPromotionSkuModel(quantity = 5, skuId = 1),
-                getFakeFamilyPromotionSkuModel(quantity = 10, skuId = 2),
-                getFakeFamilyPromotionSkuModel(quantity = 2, skuId = 3)
+                getFakeFamilyPromotionSkuModel(quantity = 20, skuId = 2),
+                getFakeFamilyPromotionSkuModel(quantity = 20, skuId = 3)
             )
         )
     }
@@ -485,6 +489,7 @@ object BillMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -507,6 +512,7 @@ object BillMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -529,7 +535,7 @@ object BillMultipleFamilyDataSource {
     }
 
     fun get_count_amount_error(): PromotionModel {
-        return  PromotionModel(
+        return PromotionModel(
             promotionId = 1,
             title = "Buy 2 unique skus of sku family and get 10 rsoff",
             promotionState = PromotionConstant.MULTIPLE_PROMOTION,
@@ -555,6 +561,7 @@ object BillMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -577,6 +584,7 @@ object BillMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -598,7 +606,7 @@ object BillMultipleFamilyDataSource {
     }
 
     fun get_count_percent_success(): PromotionModel {
-        return  PromotionModel(
+        return PromotionModel(
             promotionId = 1,
             title = "Buy 2 unique skus of sku family and get 10 rsoff",
             promotionState = PromotionConstant.MULTIPLE_PROMOTION,
@@ -624,6 +632,7 @@ object BillMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -646,6 +655,7 @@ object BillMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -669,7 +679,7 @@ object BillMultipleFamilyDataSource {
     }
 
     fun get_count_percent_error(): PromotionModel {
-        return  PromotionModel(
+        return PromotionModel(
             promotionId = 1,
             title = "Buy 2 unique skus of sku family and get 10 rsoff",
             promotionState = PromotionConstant.MULTIPLE_PROMOTION,
@@ -695,6 +705,7 @@ object BillMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -717,6 +728,7 @@ object BillMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -765,6 +777,7 @@ object BillMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -787,6 +800,7 @@ object BillMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -810,7 +824,7 @@ object BillMultipleFamilyDataSource {
     }
 
     fun get_count_sku_error(): PromotionModel {
-        return  PromotionModel(
+        return PromotionModel(
             promotionId = 1,
             title = "Buy 2 unique skus of sku family and get 1 free sku ",
             promotionState = PromotionConstant.MULTIPLE_PROMOTION,
@@ -836,6 +850,7 @@ object BillMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -858,6 +873,7 @@ object BillMultipleFamilyDataSource {
                     criteriaMinValue = 0,
                     skuGroupId = 1,
                     familyStatus = true,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -878,5 +894,4 @@ object BillMultipleFamilyDataSource {
             )
         )
     }
-
 }

@@ -70,7 +70,8 @@ object SingleGroupDataSource {
                     criteriaMinOpr = OperatorConstants.GREATER_THAN_EQUALS,
                     criteriaMinValue = 0,
                     skuGroupId = 1,
-                    familyStatus = true,
+                    familyStatus = false,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -128,7 +129,8 @@ object SingleGroupDataSource {
                     criteriaMinOpr = OperatorConstants.GREATER_THAN_EQUALS,
                     criteriaMinValue = 0,
                     skuGroupId = 1,
-                    familyStatus = true,
+                    familyStatus = false,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -186,7 +188,8 @@ object SingleGroupDataSource {
                     criteriaMinOpr = OperatorConstants.GREATER_THAN_EQUALS,
                     criteriaMinValue = 0,
                     skuGroupId = 1,
-                    familyStatus = true,
+                    familyStatus = false,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -244,7 +247,8 @@ object SingleGroupDataSource {
                     criteriaMinOpr = OperatorConstants.GREATER_THAN_EQUALS,
                     criteriaMinValue = 0,
                     skuGroupId = 1,
-                    familyStatus = true,
+                    familyStatus = false,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -302,7 +306,8 @@ object SingleGroupDataSource {
                     criteriaMinOpr = OperatorConstants.GREATER_THAN_EQUALS,
                     criteriaMinValue = 0,
                     skuGroupId = 1,
-                    familyStatus = true,
+                    familyStatus = false,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -360,7 +365,8 @@ object SingleGroupDataSource {
                     criteriaMinOpr = OperatorConstants.GREATER_THAN_EQUALS,
                     criteriaMinValue = 0,
                     skuGroupId = 1,
-                    familyStatus = true,
+                    familyStatus = false,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -418,7 +424,8 @@ object SingleGroupDataSource {
                     criteriaMinOpr = OperatorConstants.GREATER_THAN_EQUALS,
                     criteriaMinValue = 0,
                     skuGroupId = 1,
-                    familyStatus = true,
+                    familyStatus = false,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -476,7 +483,8 @@ object SingleGroupDataSource {
                     criteriaMinOpr = OperatorConstants.GREATER_THAN_EQUALS,
                     criteriaMinValue = 0,
                     skuGroupId = 1,
-                    familyStatus = true,
+                    familyStatus = false,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -535,7 +543,8 @@ object SingleGroupDataSource {
                     criteriaMinOpr = OperatorConstants.GREATER_THAN_EQUALS,
                     criteriaMinValue = 0,
                     skuGroupId = 1,
-                    familyStatus = true,
+                    familyStatus = false,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -594,7 +603,8 @@ object SingleGroupDataSource {
                     criteriaMinOpr = OperatorConstants.GREATER_THAN_EQUALS,
                     criteriaMinValue = 0,
                     skuGroupId = 1,
-                    familyStatus = true,
+                    familyStatus = false,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -653,7 +663,8 @@ object SingleGroupDataSource {
                     criteriaMinOpr = OperatorConstants.GREATER_THAN_EQUALS,
                     criteriaMinValue = 0,
                     skuGroupId = 1,
-                    familyStatus = true,
+                    familyStatus = false,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,
@@ -712,7 +723,8 @@ object SingleGroupDataSource {
                     criteriaMinOpr = OperatorConstants.GREATER_THAN_EQUALS,
                     criteriaMinValue = 0,
                     skuGroupId = 1,
-                    familyStatus = true,
+                    familyStatus = false,
+                    familyId = -1,
                     skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                         familyId = 1,
                         promotionId = 1,

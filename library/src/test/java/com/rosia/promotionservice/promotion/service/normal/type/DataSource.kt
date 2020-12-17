@@ -45,7 +45,6 @@ object DataSource {
         )
     }
 
-
     private fun getFakeApplicableSkuModelWithAmountCriteria(
         skuId: Long = 1,
         skuGroupId: Int = 1
@@ -59,6 +58,7 @@ object DataSource {
             criteriaMinValue = 0,
             skuGroupId = skuGroupId,
             familyStatus = false,
+            familyId = -1,
             skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                 familyId = 1,
                 promotionId = 1,
@@ -87,6 +87,7 @@ object DataSource {
             criteriaMinValue = 0,
             skuGroupId = skuGroupId,
             familyStatus = false,
+            familyId = -1,
             skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                 familyId = 1,
                 promotionId = 1,
@@ -115,6 +116,7 @@ object DataSource {
             criteriaMinValue = 0,
             skuGroupId = skuGroupId,
             familyStatus = false,
+            familyId = -1,
             skuFamilyCriteriaModel = SkuFamilyCriteriaModel(
                 familyId = 1,
                 promotionId = 1,
@@ -562,7 +564,7 @@ object DataSource {
                 getFakeApplicableSkuModelWithQuantityCriteria(
                     skuId = 2
                 )
-            ),skuList = listOf(
+            ), skuList = listOf(
                 getFakePromotionSkuModel(1),
                 getFakePromotionSkuModel(1)
             )
@@ -765,7 +767,7 @@ object DataSource {
                 getFakeApplicableSkuModelWithAmountCriteria(
                     skuId = 2
                 )
-            ),skuList = listOf(
+            ), skuList = listOf(
                 getFakePromotionSkuModel(1),
                 getFakePromotionSkuModel(1)
             )

@@ -123,10 +123,11 @@ data class ApplicableSkuLocalModel(
     var criteriaMinValue: Int,
     var skuGroupId: Int,
     var familyStatus: Boolean,
+    var familyId: Long,
     @Ignore var groupCriteriaLocalModel: PromotionSkuGroupModel?, // map this model with PromotionSkuGroupEntity
     @Ignore var skuFamilyCriteriaModel: SkuFamilyCriteriaModel?
 ) : Parcelable {
-    constructor() : this(0, "", "", 0, "", 0, 0, false, null, null)
+    constructor() : this(0, "", "", 0, "", 0, 0, false, -1, null, null)
 }
 
 @Parcelize

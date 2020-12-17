@@ -26,8 +26,9 @@ class BillMultiplePromotionCriteriaGroupGroupCountTest {
         promotionService.checkPromotion(
             promotionModel = BillMultipleGroupDataSource.get_group_count_percent_promotion_success(),
         )
+        println(promotion.message)
         assertEquals(true, promotion.promotionModel.isApplied)
-        assertEquals(600.0, promotion.promotionModel.amountModel?.discountAmount)
+        assertEquals(300.0, promotion.promotionModel.amountModel?.discountAmount)
     }
 
     @Test

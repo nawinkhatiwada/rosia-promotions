@@ -26,6 +26,7 @@ class BillMultiplePromotionCriteriaFamilyAmountServiceTest {
             promotionModel = BillMultipleFamilyDataSource.get_amount_amount_promotion_success(),
         )
         Assert.assertEquals(true, promotion.promotionModel.isApplied)
+        Assert.assertEquals(10.0, promotion.promotionModel.amountModel?.discountAmount)
     }
 
     @Test
@@ -37,6 +38,7 @@ class BillMultiplePromotionCriteriaFamilyAmountServiceTest {
             promotionModel = BillMultipleFamilyDataSource.get_amount_amount_error(),
         )
         Assert.assertEquals(false, promotion.promotionModel.isApplied)
+        Assert.assertEquals("Some of the family has Minimum Order Value of amount 1000", promotion.message)
     }
 
     @Test
@@ -63,6 +65,7 @@ class BillMultiplePromotionCriteriaFamilyAmountServiceTest {
             promotionModel = BillMultipleFamilyDataSource.get_amount_percent_promotion_error(),
         )
         Assert.assertEquals(false, promotion.promotionModel.isApplied)
+        Assert.assertEquals("Some of the family has Minimum Order Value of amount 1000", promotion.message)
     }
 
     @Test
@@ -86,5 +89,6 @@ class BillMultiplePromotionCriteriaFamilyAmountServiceTest {
             promotionModel = BillMultipleFamilyDataSource.get_amount_sku_promotion_error(),
         )
         Assert.assertEquals(false, promotion.promotionModel.isApplied)
+        Assert.assertEquals("Some of the family has Minimum Order Value of amount 3000", promotion.message)
     }
 }
