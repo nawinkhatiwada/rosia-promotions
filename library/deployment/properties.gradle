@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://git.evolveasia.co/mobile_internal_libraries/rosia-promotions.git'
     gitUrl = 'https://git.evolveasia.co/mobile_internal_libraries/rosia-promotions.git'
 
-    libraryVersion = '1.0.3'
+    libraryVersion = '1.0.4'
 
     developerId = 'krishnalalstha-evolve'
     developerName = 'Krishna Shrestha'
