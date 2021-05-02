@@ -23,7 +23,7 @@ data class PromotionModel(
     var applicableSkuIds: String? = "",         // todo remove
     var isApplied: Boolean = false,
     var promotionType: String,
-    var promotionValidCount: Int = 0,
+    var promotionValidCount: Int ?= 0,
     @Ignore var disbursementSkuList: List<DisbursementSkuModel>? = null,
     @Ignore var skuList: List<PromotionSkuModel>,
     @Ignore var amountModel: BillAmountModel? = null,
