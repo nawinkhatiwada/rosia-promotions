@@ -23,7 +23,7 @@ data class PromotionModel(
     var applicableSkuIds: String? = "",         // todo remove
     var isApplied: Boolean = false,
     var promotionType: String,
-    var promotionValidCount: Int ?= 0,
+    var promotionValidCount: Int? = 0,
     @Ignore var disbursementSkuList: List<DisbursementSkuModel>? = null,
     @Ignore var skuList: List<PromotionSkuModel>,
     @Ignore var amountModel: BillAmountModel? = null,
@@ -78,6 +78,7 @@ data class PromotionSkuModel(
     var quantity: Int,
     var promotionStatus: Boolean,
     var inStock: Boolean,
+    var skuTarget: Int? = 0,
     @Ignore var batchList: List<SkuBatchModel>? = null,
     @Ignore var discountAmount: Double,
     @Ignore var grossAmount: Double,
@@ -89,7 +90,7 @@ data class PromotionSkuModel(
     @Ignore var stockQty: Int?,
     @Ignore var imageUrl: String? = ""
 ) : Parcelable {
-    constructor() : this(0, "", "", 0, 0, false, true, null, 0.0, 0.0, 0.0, 0.0, 0.0, 0L, 0.0, 0)
+    constructor() : this(0, "", "", 0, 0, false, true, 0, null, 0.0, 0.0, 0.0, 0.0, 0.0, 0L, 0.0, 0)
 }
 
 @Parcelize
