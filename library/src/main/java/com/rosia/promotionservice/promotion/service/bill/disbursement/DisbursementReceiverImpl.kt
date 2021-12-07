@@ -83,14 +83,32 @@ class DisbursementReceiverImpl(private val listener: PromotionListener) : Disbur
         )
         promotion.isApplied = true
         promotion.newDisbursementValue = if (promotion.allowMultiple) {
-            (promotion.skuList
-                .filter { it.quantity > 0 }
-                .sumBy { it.quantity } / promotion.criteriaMinValue) * (promotion.disbursementValue
-                ?: 0.0)
+            if (promotion.promotionType == PromotionConstant.PROMOTION_TYPE_TOP_UP) {
+                handleTopUpCase(promotion)
+            } else {
+                handleBillUseCase(promotion)
+            }
         } else {
             promotion.disbursementValue ?: 0.0
         }
         listener.getUpdatedPromotion(promotion, "")
+    }
+
+    private fun handleTopUpCase(promotion: PromotionModel): Double {
+        val applicableSKUs =
+            promotion.applicableSkuModelList?.map { it.skuId } ?: emptyList()
+        val topUpSKUList = promotion.skuList.filter { it.skuId in applicableSKUs }
+        return (topUpSKUList
+            .filter { it.quantity > 0 }
+            .sumBy { it.quantity } / promotion.criteriaMinValue) * (promotion.disbursementValue
+            ?: 0.0)
+    }
+
+    private fun handleBillUseCase(promotion: PromotionModel): Double {
+        return (promotion.skuList
+            .filter { it.quantity > 0 }
+            .sumBy { it.quantity } / promotion.criteriaMinValue) * (promotion.disbursementValue
+            ?: 0.0)
     }
 
     override fun handleBillPercentWithCriteriaMultipleAmount(promotion: PromotionModel) {
