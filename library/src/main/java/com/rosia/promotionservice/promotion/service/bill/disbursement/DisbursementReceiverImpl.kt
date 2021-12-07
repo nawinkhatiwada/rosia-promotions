@@ -70,11 +70,23 @@ class DisbursementReceiverImpl(private val listener: PromotionListener) : Disbur
     }
 
     override fun handleBillFreeSkuUseCase(promotion: PromotionModel) {
-        val amountModel = AmountCalculator.calculateAmountDetailsForBill(
-            promotion.skuList,
-            promotion.disbursementValue,
-            promotionModel = promotion
-        )
+        val amountModel =
+            if (promotion.promotionType == PromotionConstant.PROMOTION_TYPE_CURRENT_BILL ||
+                promotion.promotionType == PromotionConstant.PROMOTION_TYPE_NEXT_BILL
+            ) {
+                AmountCalculator.calculateAmountDetailsForBill(
+                    promotion.skuList,
+                    promotion.disbursementValue
+                )
+            } else {
+                val applicableSKUs =
+                    promotion.applicableSkuModelList?.map { it.skuId } ?: emptyList()
+                val topUpSKUList = promotion.skuList.filter { it.skuId in applicableSKUs }
+                AmountCalculator.calculateAmountDetailsForTopUp(
+                    topUpSKUList,
+                    promotion.disbursementValue
+                )
+            }
         promotion.amountModel = BillAmountModel(
             discountAmount = amountModel.discountAmount,
             grossAmount = amountModel.grossAmount,

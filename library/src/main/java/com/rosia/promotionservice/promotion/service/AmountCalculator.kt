@@ -1,6 +1,5 @@
 package com.rosia.promotionservice.promotion.service
 
-import com.rosia.promotionservice.promotion.data.PromotionModel
 import com.rosia.promotionservice.promotion.data.PromotionSkuModel
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -38,29 +37,10 @@ object AmountCalculator {
     fun calculateAmountDetailsForBill(
         skuList: List<PromotionSkuModel>,
         disbursementValue: Double? = 0.0,
-        isDisbursementTypeAmount: Boolean = false,
-        promotionModel: PromotionModel? = null
+        isDisbursementTypeAmount: Boolean = false
     ): AmountModel {
-
-        val sumOfTopUpAmount =
-            if (promotionModel?.promotionType == PromotionConstant.PROMOTION_TYPE_TOP_UP) {
-                val applicableSKUs =
-                    promotionModel.applicableSkuModelList?.map { it.skuId } ?: emptyList()
-                val topUpSKUList = promotionModel.skuList.filter { it.skuId in applicableSKUs }
-                topUpSKUList.sumByDouble { it.topUpDiscount }
-            } else {
-                skuList.sumByDouble { it.topUpDiscount }
-            }
-
-        val sumTaxableAmount =
-            if (promotionModel?.promotionType == PromotionConstant.PROMOTION_TYPE_TOP_UP) {
-                val applicableSKUs =
-                    promotionModel.applicableSkuModelList?.map { it.skuId } ?: emptyList()
-                val topUpSKUList = promotionModel.skuList.filter { it.skuId in applicableSKUs }
-                topUpSKUList.sumByDouble { it.topUpDiscount }
-            } else {
-                skuList.sumByDouble { it.taxableAmount }
-            }
+        val sumOfTopUpAmount = skuList.sumByDouble { it.topUpDiscount }
+        val sumTaxableAmount = skuList.sumByDouble { it.taxableAmount }
         // sumTaxableAmount -= sumOfTopUpAmount
         val discountAmount = if (isDisbursementTypeAmount) {
             disbursementValue ?: 0.0
