@@ -72,7 +72,8 @@ class DisbursementReceiverImpl(private val listener: PromotionListener) : Disbur
     override fun handleBillFreeSkuUseCase(promotion: PromotionModel) {
         val amountModel = AmountCalculator.calculateAmountDetailsForBill(
             promotion.skuList,
-            promotion.disbursementValue
+            promotion.disbursementValue,
+            promotionModel = promotion
         )
         promotion.amountModel = BillAmountModel(
             discountAmount = amountModel.discountAmount,
