@@ -76,15 +76,16 @@ class DisbursementReceiverImpl(private val listener: PromotionListener) : Disbur
             ) {
                 AmountCalculator.calculateAmountDetailsForBill(
                     promotion.skuList,
-                    promotion.disbursementValue
+                    null
                 )
             } else {
+                // top up case
                 val applicableSKUs =
                     promotion.applicableSkuModelList?.map { it.skuId } ?: emptyList()
                 val topUpSKUList = promotion.skuList.filter { it.skuId in applicableSKUs }
                 AmountCalculator.calculateAmountDetailsForTopUp(
                     topUpSKUList,
-                    promotion.disbursementValue
+                   null
                 )
             }
         promotion.amountModel = BillAmountModel(
