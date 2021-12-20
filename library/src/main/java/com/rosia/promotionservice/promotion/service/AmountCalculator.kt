@@ -40,8 +40,8 @@ object AmountCalculator {
         isDisbursementTypeAmount: Boolean = false
     ): AmountModel {
         val sumOfTopUpAmount = skuList.sumByDouble { it.topUpDiscount }
-        val sumTaxableAmount = skuList.sumByDouble { it.taxableAmount }
-        // sumTaxableAmount -= sumOfTopUpAmount
+        var sumTaxableAmount = skuList.sumByDouble { it.taxableAmount }
+        sumTaxableAmount -= sumOfTopUpAmount
         val discountAmount = if (isDisbursementTypeAmount) {
             disbursementValue ?: 0.0
         } else {
