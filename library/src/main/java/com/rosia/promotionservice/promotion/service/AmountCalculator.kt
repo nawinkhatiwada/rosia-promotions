@@ -47,7 +47,7 @@ object AmountCalculator {
         } else {
             (sumTaxableAmount * (disbursementValue ?: 0.0)) / 100
         }
-        val totalTaxableAmount = sumTaxableAmount - discountAmount - sumOfTopUpAmount
+        val totalTaxableAmount = sumTaxableAmount - discountAmount
         val netAmount = totalTaxableAmount * (1.13)
         val vatAmount = netAmount - totalTaxableAmount
 
