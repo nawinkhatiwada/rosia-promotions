@@ -6,4 +6,7 @@ interface CriteriaReceiver {
     fun handleAmountCriteriaUseCase(promotion: PromotionModel): Boolean
     fun handleQuantityCriteriaUseCase(promotion: PromotionModel): Boolean
     fun handleCountCriteriaUseCase(promotion: PromotionModel): Boolean
+    fun handleCountMultipleCriteriaUseCase(promotion: PromotionModel): Boolean
+    fun handleGroupCountCriteriaUseCase(promotion: PromotionModel): Boolean
+    fun handleGroupCountMultipleCriteriaUseCase(promotion: PromotionModel): Boolean
 }

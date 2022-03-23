@@ -1,5 +1,6 @@
 package com.rosia.promotionservice.promotion.service.normal.disbursement
 
+import com.rosia.promotionservice.promotion.data.BillAmountModel
 import com.rosia.promotionservice.promotion.data.PromotionModel
 import com.rosia.promotionservice.promotion.service.AmountCalculator
 import com.rosia.promotionservice.promotion.service.PromotionListener
@@ -296,6 +297,48 @@ class DisbursementReceiverImpl(private val listener: PromotionListener) : Disbur
             (promotion.disbursementValue ?: 0.0)
         }
 
+        promotion.isApplied = true
+        listener.getUpdatedPromotion(promotion, "")
+    }
+
+    //TODO fix
+    override fun handlePercentWithCriteriaMultipleAmount(promotion: PromotionModel) {
+        val maxCriteria = promotion.criteriaMaxValue
+        val totalSkuCount = promotion.skuList.count { it.quantity > 0 }
+        promotion.newDisbursementValue = if (totalSkuCount < maxCriteria) {
+            (totalSkuCount * (promotion.disbursementValue ?: 0.0))
+        } else {
+            maxCriteria * (promotion.disbursementValue ?: 0.0)
+        }
+
+        val amountModel = AmountCalculator.calculateAmountDetailsForBill(
+            promotion.skuList,
+            promotion.newDisbursementValue
+        )
+        promotion.amountModel = BillAmountModel(
+            discountAmount = amountModel.discountAmount,
+            grossAmount = amountModel.grossAmount,
+            vatAmount = amountModel.vatAmount,
+            netAmount = amountModel.netAmount,
+            taxableAmount = amountModel.taxableAmount
+        )
+        promotion.isApplied = true
+        listener.getUpdatedPromotion(promotion, "")
+    }
+
+    //TODO fix
+    override fun handlePercentWithCriteriaGroupCountMultipleAmount(promotion: PromotionModel) {
+        val amountModel = AmountCalculator.calculateAmountDetailsForBill(
+            promotion.skuList,
+            promotion.newDisbursementValue
+        )
+        promotion.amountModel = BillAmountModel(
+            discountAmount = amountModel.discountAmount,
+            grossAmount = amountModel.grossAmount,
+            vatAmount = amountModel.vatAmount,
+            netAmount = amountModel.netAmount,
+            taxableAmount = amountModel.taxableAmount
+        )
         promotion.isApplied = true
         listener.getUpdatedPromotion(promotion, "")
     }

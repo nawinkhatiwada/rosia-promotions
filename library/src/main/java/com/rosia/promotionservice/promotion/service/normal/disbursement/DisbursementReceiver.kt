@@ -13,4 +13,7 @@ interface DisbursementReceiver {
     fun handleFreeSkuWithCriteriaQuantityUseCase(promotion: PromotionModel)
     fun handleFreeSkuWithCriteriaAmountUseCase(promotion: PromotionModel)
     fun handleFreeSkuWithCriteriaCountUseCase(promotion: PromotionModel)
+
+    fun handlePercentWithCriteriaMultipleAmount(promotion: PromotionModel)
+    fun handlePercentWithCriteriaGroupCountMultipleAmount(promotion: PromotionModel)
 }
