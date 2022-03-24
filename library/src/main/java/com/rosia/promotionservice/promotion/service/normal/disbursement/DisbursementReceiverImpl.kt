@@ -301,7 +301,7 @@ class DisbursementReceiverImpl(private val listener: PromotionListener) : Disbur
         listener.getUpdatedPromotion(promotion, "")
     }
 
-    //TODO fix
+    //NOt in use
     override fun handlePercentWithCriteriaMultipleAmount(promotion: PromotionModel) {
         val maxCriteria = promotion.criteriaMaxValue
         val totalSkuCount = promotion.skuList.count { it.quantity > 0 }
