@@ -84,7 +84,7 @@ object AmountCalculator {
         )
     }
 
-    fun roundOffDecimalPlace(number: Double): Double {
+    private fun roundOffDecimalPlace(number: Double): Double {
         val decimalFormat = DecimalFormat("#.####")
         decimalFormat.roundingMode = RoundingMode.CEILING
         return decimalFormat.format(number).toDouble()

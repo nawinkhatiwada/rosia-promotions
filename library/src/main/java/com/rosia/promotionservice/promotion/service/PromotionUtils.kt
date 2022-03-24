@@ -20,7 +20,7 @@ fun checkMOQValidation(promotionModel: PromotionModel): Pair<Boolean, String> {
             return isValidSku
 
         if (skuList.first().familyStatus) {
-            val familyGroup = skuList.groupBy { it.familyId ?: 0 }
+            val familyGroup = skuList.groupBy { it.familyId }
             familyGroup.forEach { (familyId, skuFamilyList) ->
                 val applicableFamilySKUs = skuFamilyList.map { it.skuId }
                 val orderedFamilySKUList = promotionModel.skuList.filter { it.skuId in applicableFamilySKUs }

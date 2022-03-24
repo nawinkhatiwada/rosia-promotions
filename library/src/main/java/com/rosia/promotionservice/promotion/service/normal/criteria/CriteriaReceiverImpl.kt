@@ -186,8 +186,8 @@ class CriteriaReceiverImpl(private val listener: PromotionListener) : CriteriaRe
     override fun handleCountMultipleCriteriaUseCase(promotion: PromotionModel): Boolean {
         val isValidMoq = checkMOQValidation(promotion)
         if (isValidMoq.first) {
-            var listOfApplicableSku =
-                promotion.applicableSkuModelList?.map { it.skuId } // promotion.applicableSkuIds?.split(',')?.map { it.toLong() } ?: listOf()
+            /*var listOfApplicableSku =
+                promotion.applicableSkuModelList?.map { it.skuId }
 
             if (listOfApplicableSku.isNullOrEmpty()) {
                 listOfApplicableSku = promotion.skuList.map { it.skuId }
@@ -198,16 +198,40 @@ class CriteriaReceiverImpl(private val listener: PromotionListener) : CriteriaRe
 
                 val isValid = selectedSkuCount > 0
 
-                /*  OperatorHandler.isCriteriaValid(
+                *//*  OperatorHandler.isCriteriaValid(
                  selectedSkuCount.toDouble(),
                  promotion.criteriaMinValue.toDouble(),
                  promotion.criteriaMinOpr,
                  promotion.criteriaMaxValue.toDouble(),
                  promotion.criteriaMaxOpr
              ) */
+            val selectedSkuCount = promotion.skuList.count { it.quantity > 0 }
+            if (selectedSkuCount >= promotion.skuCount) {
+                val isValid = OperatorHandler.isCriteriaValid(
+                    selectedSkuCount.toDouble(),
+                    promotion.criteriaMinValue.toDouble(),
+                    promotion.criteriaMinOpr,
+                    promotion.criteriaMaxValue.toDouble(),
+                    promotion.criteriaMaxOpr
+                )
                 if (isValid) {
-                    when (promotion.disbursementType) {
+                    /*  when (promotion.disbursementType) {
                         PromotionConstant.DISBURSEMENT_PERCENT -> PercentWithCriteriaMultipleCommand(
+                            disbReceiver,
+                            promotion
+                        ).execute()
+                    }
+                }*/
+                    when (promotion.disbursementType) {
+                        PromotionConstant.DISBURSEMENT_PERCENT -> PercentCommand(
+                            disbReceiver,
+                            promotion
+                        ).execute()
+                        PromotionConstant.DISBURSEMENT_AMOUNT -> AmountWithCriteriaCountCommand(
+                            disbReceiver,
+                            promotion
+                        ).execute()
+                        PromotionConstant.DISBURSEMENT_FREE_SKU -> FreeSkuWithCriteriaCountCommand(
                             disbReceiver,
                             promotion
                         ).execute()

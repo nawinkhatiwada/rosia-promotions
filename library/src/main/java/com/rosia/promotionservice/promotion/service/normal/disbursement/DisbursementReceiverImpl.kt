@@ -328,7 +328,7 @@ class DisbursementReceiverImpl(private val listener: PromotionListener) : Disbur
 
     //TODO fix
     override fun handlePercentWithCriteriaGroupCountMultipleAmount(promotion: PromotionModel) {
-        val amountModel = AmountCalculator.calculateAmountDetailsForBill(
+      /*  val amountModel = AmountCalculator.calculateAmountDetailsForBill(
             promotion.skuList,
             promotion.newDisbursementValue
         )
@@ -339,6 +339,30 @@ class DisbursementReceiverImpl(private val listener: PromotionListener) : Disbur
             netAmount = amountModel.netAmount,
             taxableAmount = amountModel.taxableAmount
         )
+        promotion.isApplied = true
+        listener.getUpdatedPromotion(promotion, "")*/
+
+        promotion.skuList.forEach { sku ->
+            sku.batchList?.let { batchList ->
+
+                val skuBatch = batchList.first { it.isSelected }
+                val amountModel = AmountCalculator.calculateAmountDetails(
+                    quantity = sku.quantity,
+                    rlp = skuBatch.rlp,
+                    rlpWithVat = skuBatch.rlpVat,
+                    vat = skuBatch.vatPercent,
+                    disbursementValue = promotion.newDisbursementValue
+                )
+
+                sku.apply {
+                    grossAmount = amountModel.grossAmount
+                    discountAmount = amountModel.discountAmount
+                    vatAmount = amountModel.vatAmount
+                    netAmount = amountModel.netAmount
+                    taxableAmount = amountModel.taxableAmount
+                }
+            }
+        }
         promotion.isApplied = true
         listener.getUpdatedPromotion(promotion, "")
     }
