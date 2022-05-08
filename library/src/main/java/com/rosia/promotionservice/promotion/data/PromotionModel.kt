@@ -65,9 +65,10 @@ data class DisbursementSkuModel(
     var freeQuantity: Int,
     @Ignore var isSelected: Boolean? = false,
     var stockQty: Int? = 0,
-    var selectedQuantity: Int? = null
+    var selectedQuantity: Int? = null,
+    var inStock: Boolean? = false
 ) : Parcelable {
-    constructor() : this(0, 0, "", 0, false, 0, 0)
+    constructor() : this(0, 0, "", 0, false, 0, 0, false)
 }
 
 @Parcelize
