@@ -168,6 +168,7 @@ class CriteriaReceiverImpl(private val listener: PromotionListener) : CriteriaRe
                 return false
             }
         } else {
+            promotion.isApplied = false
             listener.getUpdatedPromotion(
                 promotion,
                 isValidMoq.second
