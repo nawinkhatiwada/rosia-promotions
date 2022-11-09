@@ -23,7 +23,8 @@ fun checkMOQValidation(promotionModel: PromotionModel): Pair<Boolean, String> {
             val familyGroup = skuList.groupBy { it.familyId ?: 0 }
             familyGroup.forEach { (familyId, skuFamilyList) ->
                 val applicableFamilySKUs = skuFamilyList.map { it.skuId }
-                val orderedFamilySKUList = promotionModel.skuList.filter { it.skuId in applicableFamilySKUs }
+                val orderedFamilySKUList =
+                    promotionModel.skuList.filter { it.skuId in applicableFamilySKUs }
 
                 if (skuFamilyList.first().familyStatus) {
                     skuFamilyList.first().skuFamilyCriteriaModel?.let {
@@ -132,7 +133,7 @@ private fun handlePromotionSkuGroupCriteria(
         }
     } else if (groupCriteria.type == PromotionConstant.CRITERIA_AMOUNT) {
         val totalAmount = skuList.sumByDouble {
-            ((it.batchList?.filter { it.isSelected }?.first()?.rlp) ?: 0.0).times(it.quantity)
+            ((it.batchList?.first { batch -> batch.isSelected }?.rlp) ?: 0.0).times(it.quantity)
         }
         val isValid =
             OperatorHandler.isCriteriaValid(
@@ -181,7 +182,7 @@ fun handleSkuFamilyCriteria(
         }
     } else if (familyCriteria.type == PromotionConstant.CRITERIA_AMOUNT) {
         val totalAmount = skuList.sumByDouble {
-            ((it.batchList?.filter { it.isSelected }?.first()?.rlpVat) ?: 0.0).times(it.quantity)
+            ((it.batchList?.first { batch -> batch.isSelected }?.rlp) ?: 0.0).times(it.quantity)
         }
         val isValid =
             OperatorHandler.isCriteriaValid(
