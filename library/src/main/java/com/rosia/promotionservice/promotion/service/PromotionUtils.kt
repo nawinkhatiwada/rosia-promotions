@@ -73,7 +73,7 @@ private fun handlePromotionSkuCriteria(
                 }
             } else if (skuCriteria.criteriaType == PromotionConstant.CRITERIA_AMOUNT) {
                 val rlp =
-                    promotionModel.batchList?.first { it.isSelected }?.rlpVat ?: 0.0
+                    promotionModel.batchList?.first { it.isSelected }?.rlp ?: 0.0
                 val totalAmount = promotionModel.quantity.times(rlp)
                 val isValid =
                     OperatorHandler.isCriteriaValid(
@@ -132,7 +132,7 @@ private fun handlePromotionSkuGroupCriteria(
         }
     } else if (groupCriteria.type == PromotionConstant.CRITERIA_AMOUNT) {
         val totalAmount = skuList.sumByDouble {
-            ((it.batchList?.filter { it.isSelected }?.first()?.rlpVat) ?: 0.0).times(it.quantity)
+            ((it.batchList?.filter { it.isSelected }?.first()?.rlp) ?: 0.0).times(it.quantity)
         }
         val isValid =
             OperatorHandler.isCriteriaValid(
