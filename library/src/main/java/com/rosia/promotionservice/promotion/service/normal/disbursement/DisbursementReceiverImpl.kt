@@ -26,7 +26,7 @@ class DisbursementReceiverImpl(private val listener: PromotionListener) : Disbur
                 val skuBatch = batchList.first { it.isSelected }
 
                 val newDisbursementValue = if (promotion.allowMultiple) {
-                    (amountSeparation * sku.quantity) * (orderSkuCount / promotion.criteriaMinValue)
+                    (amountSeparation * sku.quantity) * (orderSkuCount.toDouble() / promotion.criteriaMinValue.toDouble())
                 } else {
                     (amountSeparation * sku.quantity)
                 }

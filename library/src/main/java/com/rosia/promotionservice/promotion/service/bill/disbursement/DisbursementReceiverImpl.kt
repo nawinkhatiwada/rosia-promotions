@@ -17,7 +17,10 @@ class DisbursementReceiverImpl(private val listener: PromotionListener) : Disbur
                 AmountCalculator.calculateAmountDetailsForBill(
                     promotion.skuList,
                     promotion.disbursementValue,
-                    true
+                    isDisbursementTypeAmount = true,
+                    allowMultiple =  promotion.allowMultiple,
+                    promotion.criteriaMinValue.toDouble()
+
                 )
             } else {
                 val applicableSKUs =
