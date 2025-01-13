@@ -37,13 +37,21 @@ object AmountCalculator {
     fun calculateAmountDetailsForBill(
         skuList: List<PromotionSkuModel>,
         disbursementValue: Double? = 0.0,
-        isDisbursementTypeAmount: Boolean = false
+        isDisbursementTypeAmount: Boolean = false,
+        allowMultiple: Boolean = false,
+        criteriaMinValue: Double = 0.0
     ): AmountModel {
         val sumOfTopUpAmount = skuList.sumByDouble { it.topUpDiscount }
         var sumTaxableAmount = skuList.sumByDouble { it.taxableAmount }
         sumTaxableAmount -= sumOfTopUpAmount
         val discountAmount = if (isDisbursementTypeAmount) {
-            disbursementValue ?: 0.0
+            val orderSkuCount = skuList.sumBy { it.quantity }
+            getAmountDisbursementTypeDiscountAmount(
+                allowMultiple,
+                orderSkuCount,
+                disbursementValue,
+                criteriaMinValue
+            )
         } else {
             (sumTaxableAmount * (disbursementValue ?: 0.0)) / 100
         }
@@ -58,6 +66,25 @@ object AmountCalculator {
             taxableAmount = roundOffDecimalPlace(totalTaxableAmount),
             discountAmount = roundOffDecimalPlace(discountAmount)
         )
+    }
+
+    private fun getAmountDisbursementTypeDiscountAmount(
+        allowMultiple: Boolean,
+        orderSkuCount: Int,
+        disbursementValue: Double?,
+        criteriaMinValue: Double
+    ): Double {
+        return if (allowMultiple) {
+            val amountSeparation = (disbursementValue ?: 0.0) / orderSkuCount
+            val totalDisbursement = amountSeparation * orderSkuCount
+            val remainDisbursementAmount = (disbursementValue ?: 0.0) - totalDisbursement
+            val newDisbursementValue =
+                (amountSeparation * orderSkuCount) * (orderSkuCount.toDouble() / criteriaMinValue)
+            val actualDiscountAmount = newDisbursementValue + remainDisbursementAmount
+            actualDiscountAmount
+        } else {
+            disbursementValue ?: 0.0
+        }
     }
 
     fun calculateAmountDetailsForTopUp(
